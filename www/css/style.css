@@ -1,5 +1,8 @@
-.type-lan {
-    background-color: red;
-    height: 100px;
-    display: inline-block;
+.shortEvent-img {
+    height: 60px;
+}
+
+.type-icon {
+    height: 20px;
+    width: 20px;
 }

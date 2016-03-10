@@ -20,13 +20,13 @@ angular.module('geekeventsApp.controllers', [])
                 state: 'cosplayEvents'       
             },
             {
-                menuText: 'Cardgame Events',
-                state: 'cardEvents'       
+                menuText: 'Boardgame Events',
+                state: 'boardEvents'       
             },
             {
-                menuText: 'All Events',
-                state: 'allEvents'       
-            },
+                menuText: 'Other Events',
+                state: 'otherEvents'       
+            }
         ]
         $scope.currentState = "all events";
 

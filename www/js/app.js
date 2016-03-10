@@ -64,8 +64,8 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'geekeven
                     }
                 }
             })
-            .state('app.cardEvents', {
-                url: '/cardEvents',
+            .state('app.boardEvents', {
+                url: '/boardEvents',
                 views: {
                     'menuContent': {
                         templateUrl: 'templates/eventList.html'

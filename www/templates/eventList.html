@@ -1,6 +1,8 @@
 <ion-view view-title="Testtitle">
-  <ion-content>
-    <h1>{{currentState}}</h1>
-    <short-event event="{}"></short-event>
-  </ion-content>
+    <ion-content>
+        <div class="list">
+            <short-event event="{}" ng-repeat="item in [0,1,2]"></short-event>
+        </div>
+        <h1>{{currentState}}</h1>
+    </ion-content>
 </ion-view>
