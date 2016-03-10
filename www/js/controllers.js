@@ -30,29 +30,37 @@ angular.module('geekeventsApp.controllers', [])
                 }
             ]
             $scope.currentState = "allEvents";
+            $scope.headline = "All";
             $scope.eventList = {};
 
             $scope.getEvents = function(state) {
                 switch (state) {
                     case 'allEvents':
+                        $scope.headline = "All";
                         apiFactory.getAllEvents().success(function(result) {
                             $scope.eventList = result;
                             console.log(result);
                         });
                         break;
                     case 'localEvents':
+                        $scope.headline = "Local";
+                        //TODO: get local events
                         $scope.eventList = {};
                         break;
                     case 'gameEvents':
+                        $scope.headline = "Game";
                         getEventsByType('lan');
                         break;
                     case 'cosplayEvents':
+                        $scope.headline = "Cosplay";
                         getEventsByType('cosplay');
                         break;
                     case 'boardEvents':
+                        $scope.headline = "Board Game";
                         getEventsByType('board');
                         break;
                     case 'otherEvents':
+                        $scope.headline = "Other";
                         getEventsByType('other');
                         break;
                 }
