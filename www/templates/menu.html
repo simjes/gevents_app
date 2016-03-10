@@ -13,10 +13,13 @@
     </ion-side-menu-content>
 
     <ion-side-menu side="left">
-        <ion-content>
+        <ion-content class="dark">
+            <div class="text-center">
+                <img id="logo-img" src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg" />
+            </div>
+
             <ion-list>
-                <!-- TODO: ng repeat fra json med state som key og text som val -->
-                <ion-item ng-repeat="option in menuOptions" menu-close ng-click="goToPage('{{option.state}}')">
+                <ion-item ng-class="isThisCurrentState('{{option.state}}') ? 'current-selected': ''" ng-repeat="option in menuOptions" menu-close ng-click="goToPage('{{option.state}}')">
                     {{option.menuText}}
                 </ion-item>
                 <!-- if not logged in -->

@@ -5224,7 +5224,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   min-height: 100%;
   max-height: 100%;
   width: 275px;
-  background-color: #fff; }
+  background-color: #232228; }
   .menu .scroll-content {
     z-index: 10; }
   .menu .bar-header {
@@ -9730,3 +9730,41 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+.type-icon {
+  height: 20px;
+  width: 20px; }
+
+#logo-img {
+  margin: 20px 0px;
+  width: 100px;
+  height: 100px;
+  border-radius: 100px; }
+
+.dark {
+  background-color: #232228 !important;
+  color: rgba(255, 255, 255, 0.7); }
+  .dark .scroll-content {
+    background-color: #232228 !important; }
+  .dark .item {
+    background-color: #232228;
+    border: none;
+    border-top: 1px solid #464646;
+    padding: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    max-height: none; }
+    .dark .item:last-child {
+      border-bottom: 1px solid #464646; }
+    .dark .item.current {
+      background-color: #2b2b2b !important;
+      border-top: 1px solid #464646 !important;
+      border-bottom: 2px solid #333333 !important; }
+      .dark .item.current p, .dark .item.current h3 {
+        opacity: .7; }
+  .dark .current-selected {
+    border-left: 5px solid #11c1f3; }
+  .dark h2,
+  .dark h3,
+  .dark p,
+  .dark a {
+    color: rgba(255, 255, 255, 0.7); }

@@ -20,7 +20,7 @@ angular.module('geekeventsApp.controllers', [])
                 state: 'cosplayEvents'       
             },
             {
-                menuText: 'Boardgame Events',
+                menuText: 'Board Game Events',
                 state: 'boardEvents'       
             },
             {
@@ -28,7 +28,7 @@ angular.module('geekeventsApp.controllers', [])
                 state: 'otherEvents'       
             }
         ]
-        $scope.currentState = "all events";
+        $scope.currentState = "allEvents";
 
         $scope.goToPage = function (state) {
             $ionicHistory.nextViewOptions({
@@ -36,6 +36,10 @@ angular.module('geekeventsApp.controllers', [])
             });
             $state.go('app.' + state);
             $scope.currentState = state;
+        }
+        
+        $scope.isThisCurrentState = function(state) {
+            return state == $scope.currentState;
         }
 
         // With the new view caching in Ionic, Controllers are only called
