@@ -1,6 +1,6 @@
 angular.module('geekeventsApp.controllers', [])
 
-    .controller('MenuCtrl', function($scope, $ionicModal, $timeout, $state, $ionicHistory) {
+    .controller('MenuCtrl', ['$scope', '$ionicModal', '$timeout', '$state', '$ionicHistory', 'apiFactory', function($scope, $ionicModal, $timeout, $state, $ionicHistory, apiFactory) {
 
         $scope.menuOptions = [
             {
@@ -34,6 +34,9 @@ angular.module('geekeventsApp.controllers', [])
             switch (state) {
                 case 'allEvents':
                     console.log("all");
+                    apiFactory.getAllEvents().success(function (result) {
+                        console.log(result);
+                    });
                     break;
                 case 'localEvents':
                     console.log("local");
@@ -105,4 +108,4 @@ angular.module('geekeventsApp.controllers', [])
                 $scope.closeLogin();
             }, 1000);
         };
-    });
+    }]);

@@ -1,4 +1,4 @@
-angular.module('geekeventsApp.directives.eventDetails', [])
+angular.module('eventDetails', [])
 .directive('eventDetails', function () {
     return {
         restrict: 'E',

@@ -4,10 +4,12 @@
 // 'geekeventsApp' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'geekeventsApp.controllers' is found in controllers.js
-angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'geekeventsApp.directives.shortEvent', 'geekeventsApp.directives.eventDetails'])
-
-    .run(function ($ionicPlatform) {
-        $ionicPlatform.ready(function () {
+angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEvent', 'eventDetails'])
+    .constant('ApiEndpoint', {
+        url: 'http://localhost:8100/api' //TODO: change before deploy
+    })
+    .run(function($ionicPlatform) {
+        $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
             if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -22,7 +24,7 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'geekeven
         });
     })
 
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
 
             .state('app', {
@@ -80,8 +82,8 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'geekeven
                     }
                 }
             });
-  
-  
+
+
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/allEvents');
     });
