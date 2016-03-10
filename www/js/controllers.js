@@ -2,6 +2,32 @@ angular.module('geekeventsApp.controllers', [])
 
     .controller('MenuCtrl', function ($scope, $ionicModal, $timeout, $state, $ionicHistory) {
 
+        $scope.menuOptions = [
+            {
+                menuText: 'All Events',
+                state: 'allEvents'       
+            },
+            {
+                menuText: 'Local Events',
+                state: 'localEvents'       
+            },
+            {
+                menuText: 'Gaming Events',
+                state: 'gameEvents'       
+            },
+            {
+                menuText: 'Cosplay Events',
+                state: 'cosplayEvents'       
+            },
+            {
+                menuText: 'Cardgame Events',
+                state: 'cardEvents'       
+            },
+            {
+                menuText: 'All Events',
+                state: 'allEvents'       
+            },
+        ]
         $scope.currentState = "all events";
 
         $scope.goToPage = function (state) {
