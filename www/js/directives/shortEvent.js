@@ -1,4 +1,4 @@
-angular.module('geekeventsApp.directives', [])
+angular.module('geekeventsApp.directives.shortEvent', [])
 .directive('shortEvent', function () {
     return {
         restrict: 'E',
