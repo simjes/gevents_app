@@ -3,12 +3,11 @@
     <img src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg">
     <h2>{{event.name}}</h2>
     <p>{{event.address}}</p>
-    <p>Start: {{event.date_start |date:"MM/dd/yyyy 'at' h:mma"}}</p>
+    <p>Start: {{event.date_start | date:"MM/dd/yyyy 'at' h:mma"}}</p>
     <!--<p>End: {{event.date_end |date:"MM/dd/yyyy 'at' h:mma"}}</p>-->
     <!-- icons by type -->
-    <img class="type-icon" src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg" />
-    <img class="type-icon" src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg" />
-    <img class="type-icon" src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg" />
-    <img class="type-icon" src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg" />
-    <img class="type-icon" src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg" />
+    <img class="type-icon" ng-if="isType('lan')" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg">
+    <img class="type-icon" ng-if="isType('cosplay')" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg">
+    <img class="type-icon" ng-if="isType('board')" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg">
+    <img class="type-icon" ng-if="isType('other')" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg">
 </a>

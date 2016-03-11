@@ -9733,13 +9733,40 @@ a.button {
 
 .type-icon {
   height: 20px;
-  width: 20px; }
+  width: 20px;
+  border-radius: 100px;
+  margin: 0 10px; }
 
 #logo-img {
   margin: 20px 0px;
   width: 100px;
   height: 100px;
   border-radius: 100px; }
+
+.details-img-container {
+  padding: 0;
+  margin-bottom: 10px;
+  position: relative; }
+  .details-img-container img {
+    object-fit: cover;
+    width: 100%;
+    max-height: 200px; }
+  .details-img-container p {
+    background-color: rgba(0, 0, 0, 0.7);
+    bottom: 0%;
+    color: white;
+    font-family: Roboto;
+    font-size: 1.25em;
+    right: 0;
+    padding: 0.25em 0.75em;
+    position: absolute; }
+
+.details-link {
+  margin: 0px 30px; }
+
+.host-container img {
+  height: 70px;
+  width: 70px; }
 
 .dark {
   background-color: #232228 !important;

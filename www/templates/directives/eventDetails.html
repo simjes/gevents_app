@@ -1,1 +1,53 @@
-<div>this is event {{event}}</div>
+<div class="row text-center details-img-container">
+    <img src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg" />
+    <p>Price: {{event.price}}</p>
+</div>
+
+<div class="row text-center">
+    <div class="col">
+        <img class="type-icon" ng-if="isType('lan')" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg">
+        <img class="type-icon" ng-if="isType('cosplay')" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg">
+        <img class="type-icon" ng-if="isType('board')" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg">
+        <img class="type-icon" ng-if="isType('other')" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        this is event description dashjdhjaskdhlahdsjklhjdklaskdhasjklhahdahdsklhsdhj
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <i class="icon ion-ios-clock"> </i>
+        {{event.date_start | date:"MM/dd/yyyy 'at' h:mma"}} - {{event.date_end | date:"MM/dd/yyyy 'at' h:mma"}}
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <i class="icon ion-pin"> </i>
+        {{event.address}}
+    </div>
+</div>
+<div class="row text-center">
+    <!-- icons instead? -->
+    <div class="col">
+        <a class="details-link" target="_blank" href="{{event.web_link}}">Visit website</a>
+        <a class="details-link" target="_blank" href="{{event.fb_link}}">Facebook</a>
+    </div>
+</div>
+
+<!-- make directive for hosts -->
+<div class="row text-center host-container">
+    <!-- TODO: hosts logo and name? -->
+    <div class="col" ng-repeat="host in event.hosts">
+        <a href="{{host.web_link}}" target="_blank"><img ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg"></a>
+        <br> {{host.name}}
+    </div>
+</div>
+<!-- make directive for hosts -->
+
+
+<div class="row">
+    <!-- TODO: map of location -->
+</div>

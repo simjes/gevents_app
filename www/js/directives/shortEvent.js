@@ -14,6 +14,14 @@ angular.module('shortEvent', [])
                         console.log(result);
                     });
                 }
+                
+                $scope.isType = function(type) {
+                    if ($scope.event.type.indexOf(type) === -1) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
             }]
         }
     });

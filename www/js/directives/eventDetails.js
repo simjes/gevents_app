@@ -6,6 +6,15 @@ angular.module('eventDetails', [])
                 event: '='
             },
             templateUrl: '../templates/directives/eventDetails.html',
-            replace: false
+            replace: false,
+            controller: ['$scope', function($scope) {
+                $scope.isType = function(type) {
+                    if ($scope.event.type.indexOf(type) === -1) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }]
         }
     });

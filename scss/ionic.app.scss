@@ -29,6 +29,8 @@ $text-secondary: rgba(255, 255, 255, 0.7);
 .type-icon {
     height: 20px;
     width: 20px;
+    border-radius: 100px;
+    margin: 0 10px;
 }
 
 #logo-img {
@@ -36,6 +38,40 @@ $text-secondary: rgba(255, 255, 255, 0.7);
     width: 100px;
     height: 100px;
     border-radius: 100px;
+}
+
+.details-img-container {
+    padding: 0;
+    margin-bottom: 10px;
+    position: relative;
+    
+    img {
+        object-fit: cover;
+        width: 100%;
+        max-height: 200px;
+    }
+    
+    p {
+        background-color: rgba(0, 0, 0, 0.7);
+        bottom: 0%;
+        color: white;
+        font-family: Roboto;
+        font-size: 1.25em;
+        right: 0;
+        padding: 0.25em 0.75em;
+        position: absolute;
+    }
+}
+
+.details-link {
+    margin: 0px 30px;
+}
+
+.host-container {
+    img {
+        height: 70px;
+        width: 70px;
+    }
 }
 
 .dark {
