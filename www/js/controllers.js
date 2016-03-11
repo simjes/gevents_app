@@ -39,7 +39,6 @@ angular.module('geekeventsApp.controllers', [])
                         $scope.headline = "All";
                         apiFactory.getAllEvents().success(function(result) {
                             $scope.eventList = result;
-                            console.log(result);
                         });
                         break;
                     case 'localEvents':

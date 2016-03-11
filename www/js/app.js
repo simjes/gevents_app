@@ -8,7 +8,9 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEve
     .constant('ApiEndpoint', {
         url: 'http://localhost:8100/api' //TODO: change before deploy
     })
-    .run(function($ionicPlatform) {
+    .run(function($rootScope, $state, $stateParams, $ionicPlatform) {
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams;
         $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -33,7 +35,6 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEve
                 templateUrl: 'templates/menu.html',
                 controller: 'MenuCtrl'
             })
-
             .state('app.allEvents', {
                 url: '/allEvents',
                 views: {
@@ -79,6 +80,14 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEve
                 views: {
                     'menuContent': {
                         templateUrl: 'templates/eventList.html'
+                    }
+                }
+            })
+            .state('app.eventDetails', {
+                url: '/eventDetails',               
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/detailsOfEvent.html'
                     }
                 }
             });
