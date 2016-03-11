@@ -1,5 +1,6 @@
-<ion-view title="Streemer | Twitch">
+<ion-view ng-init="initDetails()">
+    <ion-nav-title>{{selectedEvent.name}}</ion-nav-title>
   <ion-content>
-    stuff dsads
+    <event-details event="selectedEvent"></event-details>
   </ion-content>
 </ion-view>

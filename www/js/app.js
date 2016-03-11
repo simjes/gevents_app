@@ -84,10 +84,14 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEve
                 }
             })
             .state('app.eventDetails', {
-                url: '/eventDetails',               
+                url: '/eventDetails',
+                params: {
+                    eventInfo: null
+                },
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/detailsOfEvent.html'
+                        templateUrl: 'templates/detailsOfEvent.html',
+                        controller: 'DetailsCtrl'
                     }
                 }
             });

@@ -124,4 +124,9 @@ angular.module('geekeventsApp.controllers', [])
                     $scope.closeLogin();
                 }, 1000);
             };
+        }])
+        .controller('DetailsCtrl', ['$scope', '$stateParams', function($scope, $stateParams) {
+            $scope.initDetails = function() {
+                $scope.selectedEvent = $stateParams.eventInfo;
+            }
         }]);

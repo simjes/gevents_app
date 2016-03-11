@@ -10,7 +10,7 @@ angular.module('shortEvent', [])
             controller: ['$scope', '$state', '$ionicHistory', 'apiFactory', function($scope, $state, $ionicHistory, apiFactory) {
                 $scope.getEventDetails = function(eventId) {
                     apiFactory.getEventDetails(eventId).success(function(result) {
-                        $state.go('app.eventDetails');
+                        $state.go('app.eventDetails', {eventInfo: result});
                         console.log(result);
                     });
                 }
