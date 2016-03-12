@@ -9768,20 +9768,13 @@ a.button {
   font-size: 30px;
   margin: 0 10px; }
 
-.type-icon-details-inactive {
-  opacity: 0.3;
-  font-size: 30px;
-  margin: 0 10px; }
-
 .type-icon-list {
   opacity: 0.7;
   font-size: 25px;
   margin: 0 10px; }
 
-.type-icon-list-inactive {
-  opacity: 0.3;
-  font-size: 25px;
-  margin: 0 10px; }
+.icon-inactive {
+  opacity: 0.3; }
 
 .host-list {
   margin-top: -20px;

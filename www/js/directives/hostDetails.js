@@ -7,5 +7,7 @@ angular.module('hostDetails', [])
             },
             templateUrl: '../templates/directives/hostDetails.html',
             replace: false
+            
+            //get host info here? or store with event(current)
         }
     });
