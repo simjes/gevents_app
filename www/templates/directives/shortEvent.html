@@ -3,15 +3,19 @@
     <!-- TODO: img and stock images -->
     <img ng-if="!event.img" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg" />
     <h2>{{event.name}}</h2>
-    <p><i class="icon ion-location info-icon-eventlist"> </i> {{event.address}}</p>
-    <p><i class="icon ion-ios-clock info-icon-eventlist"> </i> {{event.date_start | date:"MM/dd/yyyy 'at' h:mma"}}</p>
+    <p>
+        <i class="icon ion-ios-clock info-icon-eventlist"> </i> {{event.date_start | date:"dd/MM/yyyy 'at' h:mma"}}
+    </p>
+    <p>
+        <i class="icon ion-location info-icon-eventlist"> </i> {{event.address}}
+    </p>
     <!--<p>End: {{event.date_end |date:"MM/dd/yyyy 'at' h:mma"}}</p>-->
     <!-- icons by type -->
 
-    <div>
-        <i class="icon ion-ios-game-controller-a type-icon-eventlist" ng-if="isType('lan')" title="Lan"></i>
-        <i class="icon ion-tshirt type-icon-eventlist" ng-if="isType('cosplay')" title="Cosplay"></i>
-        <i class="icon ion-compose type-icon-eventlist" ng-if="isType('board')" title="Board Games"></i>
-        <i class="icon ion-ios-film type-icon-eventlist" ng-if="isType('other')" title="Other"></i>
+    <div class="text-center">
+        <i class="icon ion-ios-game-controller-a" ng-class="isType('lan') ? 'type-icon-list' : 'type-icon-list-inactive'" title="Lan"></i>
+        <i class="icon ion-tshirt" ng-class="isType('cosplay') ? 'type-icon-list' : 'type-icon-list-inactive'" title="Cosplay"></i>
+        <i class="icon ion-compose" ng-class="isType('board') ? 'type-icon-list' : 'type-icon-list-inactive'" title="Board Games"></i>
+        <i class="icon ion-ios-film" ng-class="isType('other') ? 'type-icon-list' : 'type-icon-list-inactive'" title="Other"></i>
     </div>
 </a>

@@ -7,10 +7,13 @@
 
 <div class="row text-center">
     <div class="col">
-        <i class="icon ion-ios-game-controller-a type-icon" ng-if="isType('lan')" title="Lan"></i>
-        <i class="icon ion-tshirt type-icon" ng-if="isType('cosplay')" title="Cosplay"></i>
-        <i class="icon ion-compose type-icon" ng-if="isType('board')" title="Board Games"></i>
-        <i class="icon ion-ios-film type-icon" ng-if="isType('other')" title="Other"></i>
+        <i class="icon ion-ios-game-controller-a" ng-class="isType('lan') ? 'type-icon-details' : 'type-icon-details-inactive'" title="Lan"></i>
+        <i class="icon ion-tshirt" ng-class="isType('cosplay') ? 'type-icon-details' : 'type-icon-details-inactive'"
+        title="Cosplay"></i>
+        <i class="icon ion-compose" ng-class="isType('board') ? 'type-icon-details' : 'type-icon-details-inactive'"
+        title="Board Games"></i>
+        <i class="icon ion-ios-film" ng-class="isType('other') ? 'type-icon-details' : 'type-icon-details-inactive'"
+        title="Other"></i>
     </div>
 </div>
 
@@ -25,13 +28,14 @@
         <i class="icon ion-ios-clock info-icon"></i>
     </div>
     <div class="col col-80">
-        <b>Start:</b> {{event.date_start | date:"MM/dd/yyyy 'at' h:mma"}} <br> 
-        <b>End:</b> {{event.date_end | date:"MM/dd/yyyy 'at' h:mma"}}
+        <b>Start:</b> {{event.date_start | date:"dd/MM/yyyy 'at' h:mma"}}
+        <br>
+        <b>End:</b> {{event.date_end | date:"dd/MM/yyyy 'at' h:mma"}}
     </div>
 </div>
 <div class="row row-center">
     <div class="col col-20 text-center">
-        <i class="icon ion-location info-icon"> </i> 
+        <i class="icon ion-location info-icon"> </i>
     </div>
     <div class="col col-80">
         {{event.address}}
@@ -39,7 +43,7 @@
 </div>
 <div class="row row-center">
     <div class="col col-20 text-center">
-        <i class="icon ion-ios-browsers info-icon"> </i> 
+        <i class="icon ion-ios-browsers info-icon"> </i>
     </div>
     <div class="col col-80">
         <a href="{{event.web_link}}" target="_blank">Go to webpage</a>
@@ -47,7 +51,7 @@
 </div>
 <div class="row row-center" ng-if="event.fb_link">
     <div class="col col-20 text-center">
-        <i class="icon ion-social-facebook info-icon"> </i> 
+        <i class="icon ion-social-facebook info-icon"> </i>
     </div>
     <div class="col col-80">
         <a href="{{event.fb_link}}" target="_blank">Go to Facebook event</a>

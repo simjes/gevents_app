@@ -11,7 +11,6 @@ angular.module('shortEvent', [])
                 $scope.getEventDetails = function(eventId) {
                     apiFactory.getEventDetails(eventId).success(function(result) {
                         $state.go('app.eventDetails', {eventInfo: result});
-                        console.log(result);
                     });
                 }
                 
