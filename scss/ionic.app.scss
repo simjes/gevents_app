@@ -25,6 +25,9 @@ $text-secondary: rgba(255, 255, 255, 0.7);
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+.text-boxes {
+    background-color: red;
+}
 
 #logo-img {
     margin: 20px 0px;
@@ -57,6 +60,10 @@ $text-secondary: rgba(255, 255, 255, 0.7);
 }
 
 .info-icon {
+    font-size: 40px;
+}
+
+.info-icon-eventlist {
     font-size: 20px;
 }
 

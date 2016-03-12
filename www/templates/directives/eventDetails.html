@@ -20,28 +20,43 @@
     </div>
 </div> -->
 
-<div class="row">
-    <div class="col">
-        <i class="icon ion-ios-clock info-icon"></i> {{event.date_start | date:"MM/dd/yyyy 'at' h:mma"}} - {{event.date_end | date:"MM/dd/yyyy
-        'at' h:mma"}}
+<div class="row row-center">
+    <div class="col col-20 text-center">
+        <i class="icon ion-ios-clock info-icon"></i>
+    </div>
+    <div class="col col-80">
+        <b>Start:</b> {{event.date_start | date:"MM/dd/yyyy 'at' h:mma"}} <br> 
+        <b>End:</b> {{event.date_end | date:"MM/dd/yyyy 'at' h:mma"}}
     </div>
 </div>
-<div class="row">
-    <div class="col">
-        <i class="icon ion-location info-icon"> </i> {{event.address}}
+<div class="row row-center">
+    <div class="col col-20 text-center">
+        <i class="icon ion-location info-icon"> </i> 
+    </div>
+    <div class="col col-80">
+        {{event.address}}
     </div>
 </div>
-<div class="row text-center">
-    <!-- icons instead? -->
-    <div class="col">
-        <a class="details-link" target="_blank" href="{{event.web_link}}">Visit website</a>
-        <a class="details-link" target="_blank" href="{{event.fb_link}}">Facebook</a>
+<div class="row row-center">
+    <div class="col col-20 text-center">
+        <i class="icon ion-ios-browsers info-icon"> </i> 
+    </div>
+    <div class="col col-80">
+        <a href="{{event.web_link}}" target="_blank">Go to webpage</a>
     </div>
 </div>
-
+<div class="row row-center" ng-if="event.fb_link">
+    <div class="col col-20 text-center">
+        <i class="icon ion-social-facebook info-icon"> </i> 
+    </div>
+    <div class="col col-80">
+        <a href="{{event.fb_link}}" target="_blank">Go to Facebook event</a>
+    </div>
+</div>
 <div class="text-center">Hosted by:</div>
 <div ng-repeat="host in event.hosts" ng-if="$index%2==0" class="row host-list">
-    <host-details class="col card-limiter" ng-class="event.hosts.length === 1 ? '' : ($index%2==0 && $index != (event.hosts.length - 1)  ? 'col-50' : '')" ng-if="$index < event.hosts.length" host="host"></host-details>
+    <host-details class="col card-limiter" ng-class="event.hosts.length === 1 ? '' : ($index%2==0 && $index != (event.hosts.length - 1)  ? 'col-50' : '')"
+    ng-if="$index < event.hosts.length" host="host"></host-details>
     <host-details class="col col-50 card-limiter" ng-if="($index + 1) < event.hosts.length" host="event.hosts[$index+1]"></host-details>
 </div>
 

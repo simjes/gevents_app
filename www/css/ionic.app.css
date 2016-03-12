@@ -9731,6 +9731,9 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.text-boxes {
+  background-color: red; }
+
 #logo-img {
   margin: 20px 0px;
   width: 100px;
@@ -9756,6 +9759,9 @@ a.button {
     position: absolute; }
 
 .info-icon {
+  font-size: 40px; }
+
+.info-icon-eventlist {
   font-size: 20px; }
 
 .type-icon {
