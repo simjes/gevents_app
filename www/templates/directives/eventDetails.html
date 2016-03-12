@@ -1,32 +1,34 @@
 <div class="row text-center details-img-container">
-    <img src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg" />
+    <img ng-if="event.img" ng-src="{{event.img}}" />
+    <!-- need stock img -->
+    <img ng-if="!event.img" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg" />
     <p>Price: {{event.price}}</p>
 </div>
 
 <div class="row text-center">
     <div class="col">
-        <img class="type-icon" ng-if="isType('lan')" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg">
-        <img class="type-icon" ng-if="isType('cosplay')" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg">
-        <img class="type-icon" ng-if="isType('board')" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg">
-        <img class="type-icon" ng-if="isType('other')" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg">
+        <i class="icon ion-ios-game-controller-a type-icon" ng-if="isType('lan')" title="Lan"></i>
+        <i class="icon ion-tshirt type-icon" ng-if="isType('cosplay')" title="Cosplay"></i>
+        <i class="icon ion-compose type-icon" ng-if="isType('board')" title="Board Games"></i>
+        <i class="icon ion-ios-film type-icon" ng-if="isType('other')" title="Other"></i>
     </div>
 </div>
 
+<!--<div class="row">
+    <div class="col">
+        are we even gonna have event description?
+    </div>
+</div> -->
+
 <div class="row">
     <div class="col">
-        this is event description dashjdhjaskdhlahdsjklhjdklaskdhasjklhahdahdsklhsdhj
+        <i class="icon ion-ios-clock info-icon"></i> {{event.date_start | date:"MM/dd/yyyy 'at' h:mma"}} - {{event.date_end | date:"MM/dd/yyyy
+        'at' h:mma"}}
     </div>
 </div>
 <div class="row">
     <div class="col">
-        <i class="icon ion-ios-clock"> </i>
-        {{event.date_start | date:"MM/dd/yyyy 'at' h:mma"}} - {{event.date_end | date:"MM/dd/yyyy 'at' h:mma"}}
-    </div>
-</div>
-<div class="row">
-    <div class="col">
-        <i class="icon ion-pin"> </i>
-        {{event.address}}
+        <i class="icon ion-location info-icon"> </i> {{event.address}}
     </div>
 </div>
 <div class="row text-center">
@@ -37,16 +39,11 @@
     </div>
 </div>
 
-<!-- make directive for hosts -->
-<div class="row text-center host-container">
-    <!-- TODO: hosts logo and name? -->
-    <div class="col" ng-repeat="host in event.hosts">
-        <a href="{{host.web_link}}" target="_blank"><img ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg"></a>
-        <br> {{host.name}}
-    </div>
+<div class="text-center">Hosted by:</div>
+<div ng-repeat="host in event.hosts" ng-if="$index%2==0" class="row host-list">
+    <host-details class="col card-limiter" ng-class="event.hosts.length === 1 ? '' : ($index%2==0 && $index != (event.hosts.length - 1)  ? 'col-50' : '')" ng-if="$index < event.hosts.length" host="host"></host-details>
+    <host-details class="col col-50 card-limiter" ng-if="($index + 1) < event.hosts.length" host="event.hosts[$index+1]"></host-details>
 </div>
-<!-- make directive for hosts -->
-
 
 <div class="row">
     <!-- TODO: map of location -->

@@ -9731,12 +9731,6 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-.type-icon {
-  height: 20px;
-  width: 20px;
-  border-radius: 100px;
-  margin: 0 10px; }
-
 #logo-img {
   margin: 20px 0px;
   width: 100px;
@@ -9761,12 +9755,31 @@ a.button {
     padding: 0.25em 0.75em;
     position: absolute; }
 
+.info-icon {
+  font-size: 20px; }
+
+.type-icon {
+  font-size: 30px;
+  margin: 0 10px; }
+
+.type-icon-eventlist {
+  opacity: 0.7;
+  font-size: 25px;
+  margin: 0 10px; }
+
+.host-list {
+  margin-top: -20px;
+  margin-bottom: -25px; }
+  .host-list a {
+    text-decoration: none; }
+    .host-list a .card {
+      text-align: center; }
+      .host-list a .card img {
+        object-fit: cover;
+        height: 50px; }
+
 .details-link {
   margin: 0px 30px; }
-
-.host-container img {
-  height: 70px;
-  width: 70px; }
 
 .dark {
   background-color: #232228 !important;

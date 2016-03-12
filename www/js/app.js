@@ -4,7 +4,7 @@
 // 'geekeventsApp' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'geekeventsApp.controllers' is found in controllers.js
-angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEvent', 'eventDetails'])
+angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEvent', 'eventDetails', 'hostDetails'])
     .constant('ApiEndpoint', {
         url: 'http://localhost:8100/api' //TODO: change before deploy
     })

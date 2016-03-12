@@ -26,13 +26,6 @@ $text-secondary: rgba(255, 255, 255, 0.7);
 @import "www/lib/ionic/scss/ionic";
 
 
-.type-icon {
-    height: 20px;
-    width: 20px;
-    border-radius: 100px;
-    margin: 0 10px;
-}
-
 #logo-img {
     margin: 20px 0px;
     width: 100px;
@@ -63,15 +56,42 @@ $text-secondary: rgba(255, 255, 255, 0.7);
     }
 }
 
-.details-link {
-    margin: 0px 30px;
+.info-icon {
+    font-size: 20px;
 }
 
-.host-container {
-    img {
-        height: 70px;
-        width: 70px;
+.type-icon {
+    font-size: 30px;
+    margin: 0 10px;
+}
+
+.type-icon-eventlist {
+    opacity: 0.7;
+    font-size: 25px;
+    margin: 0 10px;
+}
+
+.host-list {
+    margin-top: -20px;
+    margin-bottom: -25px;
+    
+    a { 
+    text-decoration: none;
+    
+    .card {
+        text-align: center;
+            
+        img {
+          object-fit: cover; //contain?
+          height: 50px;
+        }
     }
+}
+}
+
+
+.details-link {
+    margin: 0px 30px;
 }
 
 .dark {

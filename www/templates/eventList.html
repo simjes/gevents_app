@@ -2,6 +2,7 @@
     <ion-nav-title>{{headline}} Events</ion-nav-title>
     <ion-content>
         <ion-list>
+            <!-- collection-repeat? needs array, but better performance -->
             <short-event event="event" ng-repeat="event in eventList"></short-event>
         </ion-list>
     </ion-content>
