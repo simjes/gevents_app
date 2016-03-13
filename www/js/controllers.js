@@ -4,30 +4,12 @@ angular.module('geekeventsApp.controllers', [])
         function($scope, $ionicModal, $timeout, $state, $ionicHistory, apiFactory, $cordovaGeolocation) {
 
             $scope.menuOptions = [
-                {
-                    menuText: 'All Events',
-                    state: 'allEvents'
-                },
-                {
-                    menuText: 'Local Events',
-                    state: 'localEvents'
-                },
-                {
-                    menuText: 'Gaming Events',
-                    state: 'gameEvents'
-                },
-                {
-                    menuText: 'Cosplay Events',
-                    state: 'cosplayEvents'
-                },
-                {
-                    menuText: 'Board Game Events',
-                    state: 'boardEvents'
-                },
-                {
-                    menuText: 'Other Events',
-                    state: 'otherEvents'
-                }
+                { menuText: 'All Events', state: 'allEvents' },
+                { menuText: 'Local Events', state: 'localEvents' },
+                { menuText: 'Gaming Events', state: 'gameEvents' },
+                { menuText: 'Cosplay Events', state: 'cosplayEvents' },
+                { menuText: 'Board Game Events', state: 'boardEvents' },
+                { menuText: 'Other Events', state: 'otherEvents' }
             ]
             $scope.currentState = "allEvents";
             $scope.headline = "All";
@@ -44,7 +26,7 @@ angular.module('geekeventsApp.controllers', [])
                     case 'localEvents':
                         $scope.headline = "Local";
                         $cordovaGeolocation.getCurrentPosition().then(function(pos) {
-                            //cordova mixes lng and lat.
+                            //cordova mixes lng and lat?.
                             apiFactory.getLocalEvents({ lng: pos.coords.latitude, lat: pos.coords.longitude }).success(function(result) {
                                 $scope.eventList = result;
                             });
