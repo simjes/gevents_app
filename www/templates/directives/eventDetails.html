@@ -8,12 +8,9 @@
 <div class="row text-center">
     <div class="col">
         <i class="icon ion-ios-game-controller-a type-icon-details" ng-class="isType('lan') ? '' : 'icon-inactive'" title="Lan"></i>
-        <i class="icon ion-tshirt type-icon-details" ng-class="isType('cosplay') ? '' : 'icon-inactive'"
-        title="Cosplay"></i>
-        <i class="icon ion-compose type-icon-details" ng-class="isType('board') ? '' : 'icon-inactive'"
-        title="Board Games"></i>
-        <i class="icon ion-ios-film type-icon-details" ng-class="isType('other') ? '' : 'icon-inactive'"
-        title="Other"></i>
+        <i class="icon ion-tshirt type-icon-details" ng-class="isType('cosplay') ? '' : 'icon-inactive'" title="Cosplay"></i>
+        <i class="icon ion-compose type-icon-details" ng-class="isType('board') ? '' : 'icon-inactive'" title="Board Games"></i>
+        <i class="icon ion-ios-film type-icon-details" ng-class="isType('other') ? '' : 'icon-inactive'" title="Other"></i>
     </div>
 </div>
 
@@ -28,17 +25,25 @@
         <i class="icon ion-ios-clock info-icon"></i>
     </div>
     <div class="col col-80">
-        <b>Start:</b> {{event.date_start | date:"dd/MM/yyyy 'at' h:mma"}}
+        <b>Start:</b> {{event.date_start | date:"dd/MM/yyyy 'at' H:mm"}}
         <br>
-        <b>End:</b> {{event.date_end | date:"dd/MM/yyyy 'at' h:mma"}}
+        <b>End:</b> {{event.date_end | date:"dd/MM/yyyy 'at' H:mm"}}
     </div>
 </div>
 <div class="row row-center">
     <div class="col col-20 text-center">
         <i class="icon ion-location info-icon"> </i>
     </div>
-    <div class="col col-80">
-        {{event.address}}
+    <div class="col col-60">
+        {{event.address.street}}
+        <br> {{event.address.zip_code}} {{event.address.city}}
+    </div>
+    <div class="col col-20 text-center">
+        <!-- use coords? -->
+        <!-- click on text instead? -->
+        <a class="info-icon-eventlist" href="https://www.google.no/maps/place/{{event.address.street}},+{{event.address.zip_code}}+{{event.address.city}}" target="_blank">
+            <i class="icon ion-map"> </i>
+        </a>
     </div>
 </div>
 <div class="row row-center">

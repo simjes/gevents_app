@@ -9817,3 +9817,6 @@ a.button {
   .dark p,
   .dark a {
     color: rgba(255, 255, 255, 0.7); }
+
+.item-thumbnail-right img {
+  object-fit: cover; }
