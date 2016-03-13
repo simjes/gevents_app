@@ -83,7 +83,6 @@ angular.module('geekeventsApp.controllers', [])
             function getEventsByType(type) {
                 apiFactory.getEventsByType(type).success(function(result) {
                     $scope.eventList = result;
-                    console.log(result);
                 });
             }
 

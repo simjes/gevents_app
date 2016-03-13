@@ -9758,6 +9758,10 @@ a.button {
     padding: 0.25em 0.75em;
     position: absolute; }
 
+.month-splitter {
+  margin: 10px 0px 2px 0px;
+  font-weight: bold; }
+
 .info-icon {
   font-size: 40px; }
 
