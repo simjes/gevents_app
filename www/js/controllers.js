@@ -87,6 +87,21 @@ angular.module('geekeventsApp.controllers', [])
                 });
             }
 
+            $scope.currentMonthYear = "";
+            $scope.newMonth = function(date) {
+                var dateObj = new Date(date);
+
+                if ($scope.currentMonthYear === "") {
+                    $scope.currentMonthYear = new Date(date);
+                    return true;
+                } else if (dateObj.getFullYear() === $scope.currentMonthYear.getFullYear() && dateObj.getMonth() === $scope.currentMonthYear.getMonth()) {
+                    return false;
+                } else {
+                    $scope.currentMonthYear = new Date(date);
+                    return true;
+                }
+            }
+
             // With the new view caching in Ionic, Controllers are only called
             // when they are recreated or on app start, instead of every page change.
             // To listen for when this page is active (for example, to refresh data),
@@ -125,8 +140,8 @@ angular.module('geekeventsApp.controllers', [])
                 }, 1000);
             };
         }])
-        .controller('DetailsCtrl', ['$scope', '$stateParams', function($scope, $stateParams) {
-            $scope.initDetails = function() {
-                $scope.selectedEvent = $stateParams.eventInfo;
-            }
-        }]);
+    .controller('DetailsCtrl', ['$scope', '$stateParams', function($scope, $stateParams) {
+        $scope.initDetails = function() {
+            $scope.selectedEvent = $stateParams.eventInfo;
+        }
+    }]);

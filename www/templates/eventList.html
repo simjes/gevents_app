@@ -3,7 +3,12 @@
     <ion-content>
         <ion-list>
             <!-- collection-repeat? needs array, but better performance -->
-            <short-event event="event" ng-repeat="event in eventList"></short-event>
+            <div ng-repeat="event in eventList">
+                <div ng-if="newMonth(event.date_start)" class="text-center">
+                    {{event.date_start | date: "MMMM yyyy"}}
+                </div>
+                <short-event event="event"></short-event>
+            </div>
         </ion-list>
     </ion-content>
 </ion-view>
