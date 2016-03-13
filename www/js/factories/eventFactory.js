@@ -12,6 +12,11 @@ angular.module('geekeventsApp')
 		}
         
         //TODO: get local events
+        apiFactory.getLocalEvents = function(coords) {
+            return $http.get(ApiEndpoint.url + "/events?lng=" + coords.lng + "&lat=" + coords.lat);
+        }
+        
+        
         //add events
 
         apiFactory.getEventDetails = function (eventId) {

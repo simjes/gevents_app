@@ -1,7 +1,7 @@
 angular.module('geekeventsApp.controllers', [])
 
-    .controller('MenuCtrl', ['$scope', '$ionicModal', '$timeout', '$state', '$ionicHistory', 'apiFactory',
-        function($scope, $ionicModal, $timeout, $state, $ionicHistory, apiFactory) {
+    .controller('MenuCtrl', ['$scope', '$ionicModal', '$timeout', '$state', '$ionicHistory', 'apiFactory', '$cordovaGeolocation',
+        function($scope, $ionicModal, $timeout, $state, $ionicHistory, apiFactory, $cordovaGeolocation) {
 
             $scope.menuOptions = [
                 {
@@ -43,8 +43,12 @@ angular.module('geekeventsApp.controllers', [])
                         break;
                     case 'localEvents':
                         $scope.headline = "Local";
-                        //TODO: get local events
-                        $scope.eventList = {};
+                        $cordovaGeolocation.getCurrentPosition().then(function(pos) {
+                            //cordova mixes lng and lat.
+                            apiFactory.getLocalEvents({ lng: pos.coords.latitude, lat: pos.coords.longitude }).success(function(result) {
+                                $scope.eventList = result;
+                            });
+                        });
                         break;
                     case 'gameEvents':
                         $scope.headline = "Game";
