@@ -1,37 +1,38 @@
 <ion-side-menus enable-menu-with-back-views="false">
-    <ion-side-menu-content>
-        <ion-nav-bar class="bar-calm">
-            <ion-nav-back-button>
-            </ion-nav-back-button>
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-calm">
+      <ion-nav-back-button></ion-nav-back-button>
 
-            <ion-nav-buttons side="left">
-                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-                </button>
-            </ion-nav-buttons>
-        </ion-nav-bar>
-        <ion-nav-view name="menuContent"></ion-nav-view>
-    </ion-side-menu-content>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+      </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <button ng-if="currentState === 'localEvents'" class="button button-icon button-clear ion-ios-gear-outline" ng-click="changeLocalEventsSettings()"></button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
 
-    <ion-side-menu side="left">
-        <ion-content class="dark">
-            <div class="text-center">
-                <img id="logo-img" src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg" />
-            </div>
+  <ion-side-menu side="left">
+    <ion-content class="dark">
+      <div class="text-center">
+        <img id="logo-img" src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg"/>
+      </div>
 
-            <ion-list ng-init="getEvents('allEvents')">
-                <ion-item ng-class="isThisCurrentState('{{option.state}}') ? 'current-selected': ''" ng-repeat="option in menuOptions" menu-close ng-click="goToPage('{{option.state}}')">
-                    {{option.menuText}}
-                </ion-item>
-                <!-- if not logged in -->
-                <ion-item menu-close ng-click="login()">
-                    Login
-                </ion-item>
-                <!-- of logged in 
+      <ion-list ng-init="getEvents('allEvents')">
+        <ion-item ng-class="isThisCurrentState('{{option.state}}') ? 'current-selected': ''" ng-repeat="option in menuOptions" menu-close ng-click="goToPage('{{option.state}}')">
+          {{option.menuText}}
+        </ion-item>
+        <!-- if not logged in -->
+        <ion-item menu-close ng-click="login()">
+          Login
+        </ion-item>
+        <!-- of logged in
                 <ion-item menu-close ng-click="addEvent()">
                     Add event
                 </ion-item>
                 -->
-            </ion-list>
-        </ion-content>
-    </ion-side-menu>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
 </ion-side-menus>

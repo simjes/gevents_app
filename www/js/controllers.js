@@ -1,7 +1,6 @@
 angular.module('geekeventsApp.controllers', [])
-
-    .controller('MenuCtrl', ['$scope', '$ionicModal', '$timeout', '$state', '$ionicHistory', 'apiFactory', '$cordovaGeolocation',
-        function($scope, $ionicModal, $timeout, $state, $ionicHistory, apiFactory, $cordovaGeolocation) {
+    .controller('MenuCtrl', ['$scope', '$ionicModal', '$timeout', '$state', '$ionicHistory', 'apiFactory', '$cordovaGeolocation', '$ionicPopup',
+        function($scope, $ionicModal, $timeout, $state, $ionicHistory, apiFactory, $cordovaGeolocation, $ionicPopup) {
 
             $scope.menuOptions = [
                 { menuText: 'All Events', state: 'allEvents' },
@@ -11,7 +10,7 @@ angular.module('geekeventsApp.controllers', [])
                 { menuText: 'Board Game Events', state: 'boardEvents' },
                 { menuText: 'Other Events', state: 'otherEvents' }
             ]
-            $scope.currentState = "allEvents";
+            $scope.currentState = "allEvents"; //rootScope this?
             $scope.headline = "All";
             $scope.eventList = {};
 
@@ -61,6 +60,13 @@ angular.module('geekeventsApp.controllers', [])
                     $scope.getEvents(state);
                 }
             }
+
+            $scope.changeLocalEventsSettings = function() {
+                $ionicPopup.show({
+                    templateUrl: '/templates/popUpOptions.html'
+                });
+            }
+
 
             $scope.isThisCurrentState = function(state) {
                 return state == $scope.currentState;
