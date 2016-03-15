@@ -113,8 +113,8 @@ angular.module('geekeventsApp.controllers', [])
 	$scope.loggedIn = false;
 
 	$scope.isLoggedIn = function() {
-        alert(userFactory.getUser())
-		if (userFactory.getUser() !== {}) {
+        alert(userFactory.getUser().name)
+		if (userFactory.getUser().name !== undefined) {
 			$scope.loggedIn = true;
 		} else {
 			$scope.loggedIn = false;
