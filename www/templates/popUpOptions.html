@@ -1,4 +1,3 @@
-<ion-checkbox ng-model="isChecked">Checkbox Label</ion-checkbox>
-<ion-checkbox ng-model="isChecked">Checkbox Label</ion-checkbox>
-<ion-checkbox ng-model="isChecked">Checkbox Label</ion-checkbox>
-<ion-checkbox ng-model="isChecked">Checkbox Label</ion-checkbox>
+<div class="list">
+  <ion-checkbox ng-repeat="option in filter" ng-model="option.checked" ng-checked="option.checked">{{option.text}}</ion-checkbox>
+</div>

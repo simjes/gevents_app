@@ -10,6 +10,13 @@ angular.module('geekeventsApp.controllers', [])
                 { menuText: 'Board Game Events', state: 'boardEvents' },
                 { menuText: 'Other Events', state: 'otherEvents' }
             ]
+            $scope.filter = [
+                {text: "Lan events", type: "lan", checked: true},
+                {text: "Cosplay events", type: "cosplay", checked: true},
+                {text: "Board game events", type: "board", checked: true},
+                {text: "Other events", type: "other", checked: true},
+            ]
+
             $scope.currentState = "allEvents"; //rootScope this?
             $scope.headline = "All";
             $scope.eventList = {};
@@ -63,10 +70,15 @@ angular.module('geekeventsApp.controllers', [])
 
             $scope.changeLocalEventsSettings = function() {
                 $ionicPopup.show({
-                    templateUrl: '/templates/popUpOptions.html'
+                    templateUrl: '/templates/popUpOptions.html',
+                    title: "Filter events",
+                    scope: $scope,
+                    buttons: [{
+                        text: '<b>Ok</b>',
+                        type: 'button-positive'
+                    }]
                 });
             }
-
 
             $scope.isThisCurrentState = function(state) {
                 return state == $scope.currentState;
@@ -135,4 +147,9 @@ angular.module('geekeventsApp.controllers', [])
         $scope.initDetails = function() {
             $scope.selectedEvent = $stateParams.eventInfo;
         }
+    }])
+    .controller('FilterCtrl', ['$scope', function($scope) {
+
+
+
     }]);
