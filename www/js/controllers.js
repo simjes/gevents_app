@@ -109,12 +109,12 @@ angular.module('geekeventsApp.controllers', [])
 	}
 }])
 
+//make separate file
 .controller('LoginCtrl', ['$scope', '$state', '$q', 'userFactory', '$ionicLoading', function($scope, $state, $q, userFactory, $ionicLoading) {
 	$scope.loggedIn = false;
 
 	$scope.isLoggedIn = function() {
-        alert(userFactory.getUser().name)
-		if (userFactory.getUser().name !== undefined) {
+		if (userFactory.getUser().userID !== undefined) {
 			$scope.loggedIn = true;
 		} else {
 			$scope.loggedIn = false;
@@ -123,6 +123,7 @@ angular.module('geekeventsApp.controllers', [])
 
 	var fbLoginSuccess = function(response) {
 		if (!response.authResponse) {
+			$scope.loggedIn = false;
 			fbLoginError("Cannot find the authResponse");
 			return;
 		}
@@ -139,12 +140,14 @@ angular.module('geekeventsApp.controllers', [])
 					picture: "http://graph.facebook.com/" + authResponse.userID + "/picture?type=large"
 				});
 				$ionicLoading.hide();
+				$scope.loggedIn = true;
 				$state.go('app.allEvents');
 			}, function(fail) {
 				// Fail get profile info
+				$scope.loggedIn = false;
 				console.log('profile info fail', fail);
 			});
-		$scope.loggedIn = true;
+
 	};
 
 	// This is the fail callback from the login method
@@ -196,12 +199,15 @@ angular.module('geekeventsApp.controllers', [])
 								email: profileInfo.email,
 								picture: "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
 							});
+							$scope.loggedIn = true;
 							$state.go('app.allEvents');
 						}, function(fail) {
 							// Fail get profile info
+							//$scope.loggedIn = false;
 							console.log('profile info fail', fail);
 						});
 				} else {
+					$scope.loggedIn = true;
 					$state.go('app.allEvents');
 				}
 			} else {
@@ -226,12 +232,11 @@ angular.module('geekeventsApp.controllers', [])
 	$scope.facebookSignOut = function() {
 		$scope.loggedIn = false;
         userFactory.setUser({});
-
-        alert(userFactory.getUser().name)
 		facebookConnectPlugin.logout(function() {
-
 				$state.go('app.allEvents');
 			},
-			function(fail) {});
+			function(fail) {
+				$scope.loggedIn = false; //??
+			});
 	}
 }]);
