@@ -6,7 +6,7 @@
 // 'geekeventsApp.controllers' is found in controllers.js
 angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEvent', 'eventDetails', 'hostDetails', 'ngCordova'])
 	.constant('ApiEndpoint', {
-		url: 'http://localhost:8100/api' //TODO: change before deploy
+		url: 'http://51.174.85.200:3000/api' //TODO: change before deploy
 	})
 	.run(function($rootScope, $state, $stateParams, $ionicPlatform) {
 		$rootScope.$state = $state;
