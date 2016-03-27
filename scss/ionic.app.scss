@@ -21,6 +21,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 $menu-bg:       #232228;
 $text-secondary: rgba(255, 255, 255, 0.7);
+$calm:                            #f4511e !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
@@ -40,13 +41,13 @@ $text-secondary: rgba(255, 255, 255, 0.7);
     padding: 0;
     margin-bottom: 10px;
     position: relative;
-    
+
     img {
         object-fit: cover;
         width: 100%;
         max-height: 200px;
     }
-    
+
     p {
         background-color: rgba(0, 0, 0, 0.7);
         bottom: 0%;
@@ -93,19 +94,19 @@ $text-secondary: rgba(255, 255, 255, 0.7);
 .host-list {
     margin-top: -20px;
     margin-bottom: -25px;
-    
-    a { 
+
+    a {
     text-decoration: none;
-    
+
         .card {
             text-align: center;
-            
+
             img {
                 object-fit: cover; //contain?
                 height: 50px;
-            }   
+            }
         }
-    }   
+    }
 }
 
 
@@ -146,12 +147,12 @@ $text-secondary: rgba(255, 255, 255, 0.7);
   p,
   a{
     color: $text-secondary;
-  }  
+  }
 }
 
 .item-thumbnail-right {
     img {
         object-fit: cover;
     }
-    
+
 }
