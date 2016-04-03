@@ -15,6 +15,10 @@ angular.module('eventDetails', [])
                         return true;
                     }
                 }
+
+                $scope.openExternal = function (page) {
+                    window.open(page, '_system');
+                }
             }]
         }
     });

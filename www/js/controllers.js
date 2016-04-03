@@ -109,7 +109,7 @@ angular.module('geekeventsApp.controllers', [])
 	}
 }])
 
-//make separate file
+//make separate file, read more about facebook login
 .controller('LoginCtrl', ['$scope', '$state', '$q', 'userFactory', '$ionicLoading', function($scope, $state, $q, userFactory, $ionicLoading) {
 	$scope.loggedIn = false;
 

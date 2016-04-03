@@ -41,7 +41,7 @@
     <div class="col col-20 text-center">
         <!-- use coords? -->
         <!-- click on text instead? -->
-        <a class="info-icon-eventlist" href="https://www.google.no/maps/place/{{event.address.street}},+{{event.address.zip_code}}+{{event.address.city}}" target="_blank">
+        <a class="info-icon-eventlist" href="#" ng-click="openExternal('https://www.google.no/maps/place/{{event.address.street}},+{{event.address.zip_code}}+{{event.address.city}}')">
             <i class="icon ion-map"> </i>
         </a>
     </div>
@@ -51,7 +51,7 @@
         <i class="icon ion-ios-browsers info-icon"> </i>
     </div>
     <div class="col col-80">
-        <a href="{{event.web_link}}" target="_blank">Go to webpage</a>
+        <a href="#" ng-click="openExternal('{{event.web_link}}')">Buy tickets</a><!-- change to ticket icon? -->
     </div>
 </div>
 <div class="row row-center" ng-if="event.fb_link">
@@ -59,7 +59,7 @@
         <i class="icon ion-social-facebook info-icon"> </i>
     </div>
     <div class="col col-80">
-        <a href="{{event.fb_link}}" target="_blank">Go to Facebook event</a>
+        <a href="#" ng-click="openExternal('{{event.fb_link}}')">Go to Facebook event</a>
     </div>
 </div>
 <div class="text-center">Hosted by:</div>
