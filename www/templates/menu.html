@@ -20,15 +20,14 @@
         <ion-item ng-class="isThisCurrentState('{{option.state}}') ? 'current-selected': ''" ng-repeat="option in menuOptions" menu-close ng-click="goToPage('{{option.state}}')">
           {{option.menuText}}
         </ion-item>
-        <div ng-controller="LoginCtrl" ng-init="isLoggedIn()">
-          <ion-item menu-close ng-if="loggedIn" ng-click="goToPage('addEvent')">
-            <!-- ng-class it -->
+        <ion-item menu-close ng-if="loggedIn" ng-class="isThisCurrentState('app.addEvent') ? 'current-selected': ''" ng-click="goToPage('app.addEvent')">
             Add new event
-          </ion-item>
-          <ion-item menu-close>
-            <a ng-if="!loggedIn" class="button button-block button-calm" ng-click="facebookSignIn()">Login using Facebook</a>
-            <a ng-if="loggedIn" class="button button-block button-calm" ng-click="facebookSignOut()">Log out</a>
-          </ion-item>
+        </ion-item>
+        <div ng-controller="LoginCtrl" ng-init="isLoggedIn()">
+            <ion-item menu-close>
+                <a ng-if="!loggedIn" class="button button-block button-calm" ng-click="facebookSignIn()">Login using Facebook</a>
+                <a ng-if="loggedIn" ng-controller="MenuCtrl" class="button button-block button-calm" ng-click="facebookSignOut()">Log out</a>
+            </ion-item>
         </div>
       </ion-list>
     </ion-content>

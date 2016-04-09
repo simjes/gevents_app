@@ -91,6 +91,14 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEve
 						controller: 'DetailsCtrl'
 					}
 				}
+			})
+			.state('app.addEvent', {
+				url: '/addEvent',
+				views: {
+					'menuContent': {
+						templateUrl: 'templates/addEvent.html'
+					}
+				}
 			});
 
 

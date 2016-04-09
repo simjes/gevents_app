@@ -1,42 +1,40 @@
 angular.module('geekeventsApp.controllers', [])
-	.controller('MenuCtrl', ['$scope', '$ionicModal', '$timeout', '$state', '$ionicHistory', 'apiFactory', '$cordovaGeolocation', '$ionicPopup',
-		function($scope, $ionicModal, $timeout, $state, $ionicHistory, apiFactory, $cordovaGeolocation, $ionicPopup) {
+	.controller('MenuCtrl', ['$scope', '$ionicModal', '$timeout', '$state', '$ionicHistory', 'apiFactory', '$cordovaGeolocation', '$ionicPopup', 'userFactory',
+		function($scope, $ionicModal, $timeout, $state, $ionicHistory, apiFactory, $cordovaGeolocation, $ionicPopup, userFactory) {
 
 			$scope.menuOptions = [{
 				menuText: 'All Events',
-				state: 'allEvents'
+				state: 'app.allEvents'
 			}, {
 				menuText: 'Local Events',
-				state: 'localEvents'
+				state: 'app.localEvents'
 			}, {
 				menuText: 'Gaming Events',
-				state: 'gameEvents'
+				state: 'app.gameEvents'
 			}, {
 				menuText: 'Cosplay Events',
-				state: 'cosplayEvents'
+				state: 'app.cosplayEvents'
 			}, {
 				menuText: 'Board Game Events',
-				state: 'boardEvents'
+				state: 'app.boardEvents'
 			}, {
 				menuText: 'Other Events',
-				state: 'otherEvents'
+				state: 'app.otherEvents'
 			}]
 
-			$scope.currentState = "allEvents"; //rootScope this?
-			$scope.headline = "All";
+			$scope.headline = "All Events";
 			$scope.eventList = {};
 			$scope.currentMonthYear = "";
+			$scope.loggedIn = userFactory.isLoggedIn();
 
 			$scope.getEvents = function(state) {
 				switch (state) {
 					case 'allEvents':
-						$scope.headline = "All";
 						apiFactory.getAllEvents().success(function(result) {
 							$scope.eventList = result;
 						});
 						break;
 					case 'localEvents':
-						$scope.headline = "Local";
 						$cordovaGeolocation.getCurrentPosition().then(function(pos) {
 							//cordova mixes lng and lat?.
 							apiFactory.getLocalEvents({
@@ -48,37 +46,48 @@ angular.module('geekeventsApp.controllers', [])
 						});
 						break;
 					case 'gameEvents':
-						$scope.headline = "Game";
 						getEventsByType('lan');
 						break;
 					case 'cosplayEvents':
-						$scope.headline = "Cosplay";
 						getEventsByType('cosplay');
 						break;
 					case 'boardEvents':
-						$scope.headline = "Board Game";
 						getEventsByType('board');
 						break;
 					case 'otherEvents':
-						$scope.headline = "Other";
 						getEventsByType('other');
 						break;
 				}
 			}
 
 			$scope.goToPage = function(state) {
-				if (state != $scope.currentState) {
+				if (state != $state.current.name) {
 					$ionicHistory.nextViewOptions({
 						disableBack: true
 					});
-					$state.go('app.' + state);
-					$scope.currentState = state;
+					$state.go(state);
+					setTitle(state);
 					$scope.getEvents(state);
 				}
 			}
 
+			function setTitle(state) {
+				console.log(state);
+				if (state === "app.addEvent") {
+					console.log("add event");
+					$scope.headline = "Add new event"
+				} else {
+					$scope.menuOptions.forEach(function(item) {
+						if (item.state === state) {
+							$scope.headline = item.menuText;
+							return;
+						}
+					});
+				}
+			}
+
 			$scope.isThisCurrentState = function(state) {
-				return state == $scope.currentState;
+				return state == $state.current.name;
 			}
 
 			function getEventsByType(type) {
@@ -100,6 +109,25 @@ angular.module('geekeventsApp.controllers', [])
 					return true;
 				}
 			}
+
+			$scope.facebookSignOut = function() {
+				userFactory.setLoginStatus(false);
+				userFactory.setUser({});
+				facebookConnectPlugin.logout(function() {
+						if ($state.current.name === "app.addEvent") {
+							$scope.goToPage('app.allEvents'); //oppdaterer ikke title, ctrl tull?
+						}
+					},
+					function(fail) {
+						userFactory.setLoginStatus(false); //??
+					});
+			}
+
+			$scope.$watch(function() {
+				return userFactory.loggedIn;
+			}, function(newVal, oldVal) {
+				$scope.loggedIn = newVal;
+			});
 		}
 	])
 
@@ -111,19 +139,25 @@ angular.module('geekeventsApp.controllers', [])
 
 //make separate file, read more about facebook login
 .controller('LoginCtrl', ['$scope', '$state', '$q', 'userFactory', '$ionicLoading', function($scope, $state, $q, userFactory, $ionicLoading) {
-	$scope.loggedIn = false;
+	$scope.loggedIn = userFactory.isLoggedIn();
+
+	$scope.$watch(function() {
+		return userFactory.loggedIn;
+	}, function(newVal, oldVal) {
+		$scope.loggedIn = newVal;
+	});
 
 	$scope.isLoggedIn = function() {
 		if (userFactory.getUser().userID !== undefined) {
-			$scope.loggedIn = true;
+			userFactory.setLoginStatus(true);
 		} else {
-			$scope.loggedIn = false;
+			userFactory.setLoginStatus(false);
 		}
 	}
 
 	var fbLoginSuccess = function(response) {
 		if (!response.authResponse) {
-			$scope.loggedIn = false;
+			userFactory.setLoginStatus(false);
 			fbLoginError("Cannot find the authResponse");
 			return;
 		}
@@ -140,11 +174,11 @@ angular.module('geekeventsApp.controllers', [])
 					picture: "http://graph.facebook.com/" + authResponse.userID + "/picture?type=large"
 				});
 				$ionicLoading.hide();
-				$scope.loggedIn = true;
+				userFactory.setLoginStatus(true);
 				$state.go('app.allEvents');
 			}, function(fail) {
 				// Fail get profile info
-				$scope.loggedIn = false;
+				userFactory.setLoginStatus(false);
 				console.log('profile info fail', fail);
 			});
 
@@ -154,7 +188,7 @@ angular.module('geekeventsApp.controllers', [])
 	var fbLoginError = function(error) {
 		console.log('fbLoginError', error);
 		$ionicLoading.hide();
-		$scope.loggedIn = false;
+		userFactory.setLoginStatus(false);
 	};
 
 	// This method is to get the user profile info from the facebook api
@@ -199,7 +233,7 @@ angular.module('geekeventsApp.controllers', [])
 								email: profileInfo.email,
 								picture: "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
 							});
-							$scope.loggedIn = true;
+							userFactory.setLoginStatus(true);
 							$state.go('app.allEvents');
 						}, function(fail) {
 							// Fail get profile info
@@ -207,7 +241,7 @@ angular.module('geekeventsApp.controllers', [])
 							console.log('profile info fail', fail);
 						});
 				} else {
-					$scope.loggedIn = true;
+					userFactory.setLoginStatus(true);
 					$state.go('app.allEvents');
 				}
 			} else {
@@ -229,14 +263,5 @@ angular.module('geekeventsApp.controllers', [])
 		});
 	};
 
-	$scope.facebookSignOut = function() {
-		$scope.loggedIn = false;
-        userFactory.setUser({});
-		facebookConnectPlugin.logout(function() {
-				$state.go('app.allEvents');
-			},
-			function(fail) {
-				$scope.loggedIn = false; //??
-			});
-	}
+
 }]);
