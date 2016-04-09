@@ -65,24 +65,23 @@ angular.module('geekeventsApp.controllers', [])
 					$ionicHistory.nextViewOptions({
 						disableBack: true
 					});
-					$state.go(state);
 					setTitle(state);
 					$scope.getEvents(state);
+					$state.go(state);
 				}
 			}
 
 			function setTitle(state) {
-				console.log(state);
 				if (state === "app.addEvent") {
-					console.log("add event");
 					$scope.headline = "Add new event"
 				} else {
-					$scope.menuOptions.forEach(function(item) {
-						if (item.state === state) {
-							$scope.headline = item.menuText;
+					for (var item in $scope.menuOptions) {
+						if ($scope.menuOptions[item].state === state) {
+							$scope.headline = $scope.menuOptions[item].menuText;
 							return;
 						}
-					});
+					}
+
 				}
 			}
 
@@ -111,15 +110,16 @@ angular.module('geekeventsApp.controllers', [])
 			}
 
 			$scope.facebookSignOut = function() {
-				userFactory.setLoginStatus(false);
-				userFactory.setUser({});
 				facebookConnectPlugin.logout(function() {
-						/*if ($state.current.name === "app.addEvent") {
+						//successfully logged out
+						userFactory.setLoginStatus(false);
+						userFactory.setUser({});
+						if ($state.current.name === "app.addEvent") {
 							$scope.goToPage('app.allEvents'); //this is not working
-						}*/
+						}
 					},
 					function(fail) {
-						userFactory.setLoginStatus(false); //??
+						//could not log out
 					});
 			}
 
@@ -127,9 +127,6 @@ angular.module('geekeventsApp.controllers', [])
 				return userFactory.loggedIn;
 			}, function(newVal, oldVal) {
 				$scope.loggedIn = newVal;
-				/*if (newVal == true) {
-					//gotopage?
-				}*/
 			});
 		}
 	])
@@ -178,7 +175,6 @@ angular.module('geekeventsApp.controllers', [])
 				});
 				$ionicLoading.hide();
 				userFactory.setLoginStatus(true);
-				$state.go('app.allEvents');
 			}, function(fail) {
 				// Fail get profile info
 				userFactory.setLoginStatus(false);
@@ -237,15 +233,12 @@ angular.module('geekeventsApp.controllers', [])
 								picture: "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
 							});
 							userFactory.setLoginStatus(true);
-							$state.go('app.allEvents');
 						}, function(fail) {
 							// Fail get profile info
-							//$scope.loggedIn = false;
 							console.log('profile info fail', fail);
 						});
 				} else {
 					userFactory.setLoginStatus(true);
-					$state.go('app.allEvents');
 				}
 			} else {
 				// If (success.status === 'not_authorized') the user is logged in to Facebook,
