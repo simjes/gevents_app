@@ -29,12 +29,12 @@ angular.module('geekeventsApp.controllers', [])
 
 			$scope.getEvents = function(state) {
 				switch (state) {
-					case 'allEvents':
+					case 'app.allEvents':
 						apiFactory.getAllEvents().success(function(result) {
 							$scope.eventList = result;
 						});
 						break;
-					case 'localEvents':
+					case 'app.localEvents':
 						$cordovaGeolocation.getCurrentPosition().then(function(pos) {
 							//cordova mixes lng and lat?.
 							apiFactory.getLocalEvents({
@@ -45,16 +45,16 @@ angular.module('geekeventsApp.controllers', [])
 							});
 						});
 						break;
-					case 'gameEvents':
+					case 'app.gameEvents':
 						getEventsByType('lan');
 						break;
-					case 'cosplayEvents':
+					case 'app.cosplayEvents':
 						getEventsByType('cosplay');
 						break;
-					case 'boardEvents':
+					case 'app.boardEvents':
 						getEventsByType('board');
 						break;
-					case 'otherEvents':
+					case 'app.otherEvents':
 						getEventsByType('other');
 						break;
 				}
@@ -114,9 +114,9 @@ angular.module('geekeventsApp.controllers', [])
 				userFactory.setLoginStatus(false);
 				userFactory.setUser({});
 				facebookConnectPlugin.logout(function() {
-						if ($state.current.name === "app.addEvent") {
-							$scope.goToPage('app.allEvents'); //oppdaterer ikke title, ctrl tull?
-						}
+						/*if ($state.current.name === "app.addEvent") {
+							$scope.goToPage('app.allEvents'); //this is not working
+						}*/
 					},
 					function(fail) {
 						userFactory.setLoginStatus(false); //??
@@ -127,6 +127,9 @@ angular.module('geekeventsApp.controllers', [])
 				return userFactory.loggedIn;
 			}, function(newVal, oldVal) {
 				$scope.loggedIn = newVal;
+				/*if (newVal == true) {
+					//gotopage?
+				}*/
 			});
 		}
 	])
