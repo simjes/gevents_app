@@ -1,6 +1,6 @@
 angular.module('geekeventsApp.controllers', [])
-	.controller('MenuCtrl', ['$scope', '$ionicModal', '$timeout', '$state', '$ionicHistory', 'apiFactory', '$cordovaGeolocation', '$ionicPopup', 'userFactory',
-		function($scope, $ionicModal, $timeout, $state, $ionicHistory, apiFactory, $cordovaGeolocation, $ionicPopup, userFactory) {
+	.controller('MenuCtrl', ['$scope', '$state', '$ionicHistory', 'apiFactory', '$cordovaGeolocation', 'userFactory', '$ionicLoading',
+		function($scope, $state, $ionicHistory, apiFactory, $cordovaGeolocation, userFactory, $ionicLoading) {
 
 			$scope.menuOptions = [{
 				menuText: 'All Events',
@@ -32,6 +32,7 @@ angular.module('geekeventsApp.controllers', [])
 					case 'app.allEvents':
 						apiFactory.getAllEvents().success(function(result) {
 							$scope.eventList = result;
+							$ionicLoading.hide();
 						});
 						break;
 					case 'app.localEvents':
@@ -42,6 +43,7 @@ angular.module('geekeventsApp.controllers', [])
 								lat: pos.coords.longitude
 							}).success(function(result) {
 								$scope.eventList = result;
+								$ionicLoading.hide();
 							});
 						});
 						break;
@@ -62,6 +64,12 @@ angular.module('geekeventsApp.controllers', [])
 
 			$scope.goToPage = function(state) {
 				if (state != $state.current.name) {
+					if (state != "app.addEvent") {
+						$ionicLoading.show({
+							template: '<ion-spinner icon="ripple" class="spinner-calm"></ion-spinner> </br> Loading events'
+						});
+					}
+					$scope.eventList = {};
 					$ionicHistory.nextViewOptions({
 						disableBack: true
 					});
@@ -92,6 +100,7 @@ angular.module('geekeventsApp.controllers', [])
 			function getEventsByType(type) {
 				apiFactory.getEventsByType(type).success(function(result) {
 					$scope.eventList = result;
+					$ionicLoading.hide();
 				});
 			}
 

@@ -2,13 +2,13 @@
     <ion-nav-title>{{headline}}</ion-nav-title>
     <ion-content>
         <ion-list>
-            <!-- collection-repeat? needs array, but better performance -->
+            <div style="text-align:center;" ng-if="!eventList[0]">No events here</div> <!-- get a cool icon instead -->
             <div ng-repeat="event in eventList">
                 <div ng-if="newMonth(event.date_start)" class="month-splitter text-center">
                     {{event.date_start | date: "MMMM yyyy"}}
                 </div>
                 <short-event event="event"></short-event>
             </div>
-        </ion-list>
+                    </ion-list>
     </ion-content>
 </ion-view>

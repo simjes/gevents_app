@@ -14,107 +14,83 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
-
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
-
-
-$menu-bg:       #232228;
+$menu-bg: #232228;
 $text-secondary: rgba(255, 255, 255, 0.7);
-$calm:                            #f4511e !default;
-
-// Include all of Ionic
+$calm: #f4511e !default; // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-
 .text-boxes {
-    background-color: red;
+  background-color: red;
 }
-
 #logo-img {
-    margin: 20px 0px;
-    width: 100px;
-    height: 100px;
-    border-radius: 100px;
+  margin: 20px 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
 }
-
 .details-img-container {
-    padding: 0;
-    margin-bottom: 10px;
-    position: relative;
-
-    img {
-        object-fit: cover;
-        width: 100%;
-        max-height: 200px;
-    }
-
-    p {
-        background-color: rgba(0, 0, 0, 0.7);
-        bottom: 0%;
-        color: white;
-        font-family: Roboto;
-        font-size: 1.25em;
-        right: 0;
-        padding: 0.25em 0.75em;
-        position: absolute;
-    }
+  padding: 0;
+  margin-bottom: 10px;
+  position: relative;
+  img {
+    object-fit: cover;
+    width: 100%;
+    max-height: 200px;
+  }
+  p {
+    background-color: rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    color: white;
+    font-family: Roboto;
+    font-size: 1.25em;
+    right: 0;
+    padding: 0.25em 0.75em;
+    position: absolute;
+  }
 }
-
 //remove this?
 .month-splitter {
-    margin: 10px 0px 2px 0px;
-    font-weight: bold;
+  margin: 10px 0 2px;
+  font-weight: bold;
 }
-
 //clock and location icons
 .info-icon {
-    font-size: 40px;
+  font-size: 40px;
 }
-
 .info-icon-eventlist {
-    font-size: 20px;
+  font-size: 20px;
 }
-
 //event type icons
 .type-icon-details {
-    font-size: 30px;
-    margin: 0 10px;
+  font-size: 30px;
+  margin: 0 10px;
 }
-
 .type-icon-list {
-    opacity: 0.7;
-    font-size: 25px;
-    margin: 0 10px;
+  opacity: 0.7;
+  font-size: 25px;
+  margin: 0 10px;
 }
-
 .icon-inactive {
-    opacity: 0.3;
+  opacity: 0.3;
 }
-
 .host-list {
-    margin-top: -20px;
-    margin-bottom: -25px;
-
-    a {
+  margin-top: -20px;
+  margin-bottom: -25px;
+  a {
     text-decoration: none;
-
-        .card {
-            text-align: center;
-
-            img {
-                object-fit: cover; //contain?
-                height: 50px;
-            }
-        }
+    .card {
+      text-align: center;
+      img {
+        object-fit: cover; //contain?
+        height: 50px;
+      }
     }
+  }
 }
-
-
 .details-link {
-    margin: 0px 30px;
+  margin: 0 30px;
 }
-
-
 //override
 .dark {
   background-color: $menu-bg !important;
@@ -129,30 +105,31 @@ $calm:                            #f4511e !default;
     padding: 15px;
     color: $text-secondary;
     max-height: none;
-
     &:last-child {
       border-bottom: 1px solid #464646;
     }
-    &.current{ background-color:darken( $dark, 10% )   !important;
-       border-top: 1px solid #464646 !important;
-        border-bottom: 2px solid #333333 !important;
-      p,h3{opacity: .7;}
-            }
+    &.current {
+      background-color: darken( $dark, 10% ) !important;
+      border-top: 1px solid #464646 !important;
+      border-bottom: 2px solid #333333 !important;
+      h3,
+      p {
+        opacity: 0.7;
+      }
+    }
   }
   .current-selected {
-      border-left: 5px solid $calm;
+    border-left: 5px solid $calm;
   }
+  a,
   h2,
   h3,
-  p,
-  a{
+  p {
     color: $text-secondary;
   }
 }
-
 .item-thumbnail-right {
-    img {
-        object-fit: cover;
-    }
-
+  img {
+    object-fit: cover;
+  }
 }
