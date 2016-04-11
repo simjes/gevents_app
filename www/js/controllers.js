@@ -1,6 +1,6 @@
 angular.module('geekeventsApp.controllers', [])
-	.controller('MenuCtrl', ['$scope', '$state', '$ionicHistory', 'apiFactory', '$cordovaGeolocation', 'userFactory', '$ionicLoading',
-		function($scope, $state, $ionicHistory, apiFactory, $cordovaGeolocation, userFactory, $ionicLoading) {
+	.controller('MenuCtrl', ['$scope', '$state', '$ionicHistory', 'apiFactory', '$cordovaGeolocation', 'userFactory', '$ionicLoading', '$rootScope',
+		function($scope, $state, $ionicHistory, apiFactory, $cordovaGeolocation, userFactory, $ionicLoading, $rootScope) {
 
 			$scope.menuOptions = [{
 				menuText: 'All Events',
@@ -63,6 +63,7 @@ angular.module('geekeventsApp.controllers', [])
 			}
 
 			$scope.goToPage = function(state) {
+				//changing page dosnt look good atm, fix it.
 				if (state != $state.current.name) {
 					if (state != "app.addEvent") {
 						$ionicLoading.show({
@@ -136,6 +137,14 @@ angular.module('geekeventsApp.controllers', [])
 				return userFactory.loggedIn;
 			}, function(newVal, oldVal) {
 				$scope.loggedIn = newVal;
+			});
+
+			//This should never happen as the button to go to addEvent state is not shown when not logged in.
+			//If this is not the case and it does happen -> goes to last state, but with no content loaded. Fix later?
+			$rootScope.$on('$stateChangeError', function(e, toState, toParams, fromState, fromParams, error) {
+				if (error === "Not Authorized") {
+					$state.go(fromState);
+				}
 			});
 		}
 	])

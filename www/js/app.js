@@ -98,6 +98,13 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEve
 					'menuContent': {
 						templateUrl: 'templates/addEvent.html'
 					}
+				},
+				resolve: {
+					security: ['$q', 'userFactory', function($q, userFactory) {
+						if (!userFactory.isLoggedIn()) {
+							return $q.reject("Not Authorized");
+						}
+					}]
 				}
 			});
 
