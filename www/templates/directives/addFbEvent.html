@@ -5,7 +5,7 @@
       Link to facebook event:
     </div>
     <label class="item item-input">
-      <input type="text" name="facebookLink" ng-model="facebookLink" placeholder="https://www.facebook.com/events/XXXXXXXXXXXXXX/" ng-required="isValidFacebookEvent()">
+      <input type="text" name="facebookLink" placeholder="https://www.facebook.com/events/XXXXXXXXXXXXXX/" ng-model="facebookLink" required>
     </label>
     <div class="item item-divider">
       The event is related to:
@@ -26,13 +26,14 @@
       <input type="number" name="price" ng-model="price" placeholder="Price in NOK">
     </label>
     <label class="item item-input">
+        <!-- TODO: find good way for hosts -->
       <input type="text" placeholder="placeholder for host information">
     </label>
-    <div class="item" ng-show="facebookForm.$invalid">
-        <p ng-show="isValidFacebookEvent()">* The facebook link is not valid</p>
-        <p ng-show="atleastOneType()">* Must choose atleast one type</p>
+    <div class="item" ng-show="facebookForm.$invalid || isNotValidFacebookEvent()">
+      <p ng-show="isNotValidFacebookEvent()">* The facebook link is not valid</p>
+      <p ng-show="atleastOneType()">* Must choose atleast one type</p>
     </div>
-    <button class="button button-block button-calm" ng-disabled="facebookForm.$invalid" ng-click="submitEvent(facebookForm)">
+    <button class="button button-block button-calm" ng-disabled="facebookForm.$invalid || isNotValidFacebookEvent()" ng-click="submitEvent(facebookForm)">
       Submit event
     </button>
   </form>
