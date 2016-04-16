@@ -1,10 +1,40 @@
----Fill in information about the event
-
-<form name="facebookForm" ng-submit="" novalidate> <!-- ng-submit="postEvent(facebookForm)", form validation -->
+<form name="facebookForm" novalidate>
+  <!-- , form validation -->
   <div class="list">
+    <div class="item item-divider">
+      Link to facebook event:
+    </div>
     <label class="item item-input">
-      <input type="text" placeholder="Facebook event link" required="true">
+      <input type="text" name="facebookLink" ng-model="facebookLink" placeholder="https://www.facebook.com/events/XXXXXXXXXXXXXX/" ng-required="isValidFacebookEvent()">
     </label>
+    <div class="item item-divider">
+      The event is related to:
+    </div>
+    <label class="item">
+      <ion-checkbox class="checkbox-calm" name="gamingEvent" ng-model="lan" ng-required="atleastOneType()">Gaming</ion-checkbox>
+      <ion-checkbox class="checkbox-calm" name="cosplayEvent" ng-model="cosplay" ng-required="atleastOneType()">Cosplay</ion-checkbox>
+      <ion-checkbox class="checkbox-calm" name="boardEvent" ng-model="board" ng-required="atleastOneType()">Board games</ion-checkbox>
+      <ion-checkbox class="checkbox-calm" name="otherEvent" ng-model="other" ng-required="atleastOneType()">Other</ion-checkbox>
+    </label>
+    <div class="item item-divider">
+      Optional information:
+    </div>
+    <label class="item item-input">
+      <input type="text" name="ticketLink" ng-model="ticketLink" placeholder="Link to buying tickets">
+    </label>
+    <label class="item item-input">
+      <input type="number" name="price" ng-model="price" placeholder="Price in NOK">
+    </label>
+    <label class="item item-input">
+      <input type="text" placeholder="placeholder for host information">
+    </label>
+    <div class="item" ng-show="facebookForm.$invalid">
+        <p ng-show="isValidFacebookEvent()">* The facebook link is not valid</p>
+        <p ng-show="atleastOneType()">* Must choose atleast one type</p>
+    </div>
+    <button class="button button-block button-calm" ng-disabled="facebookForm.$invalid" ng-click="submitEvent(facebookForm)">
+      Submit event
+    </button>
   </form>
 
   <!-- type of event(checkbox), web_link, price, host information, address??? -->

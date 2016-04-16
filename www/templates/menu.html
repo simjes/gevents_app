@@ -20,7 +20,7 @@
         <ion-item ng-class="isThisCurrentState('{{option.state}}') ? 'current-selected': ''" ng-repeat="option in menuOptions" menu-close ng-click="goToPage('{{option.state}}')">
           {{option.menuText}}
         </ion-item>
-        <ion-item menu-close ng-if="loggedIn" ng-class="isThisCurrentState('app.addEvent') ? 'current-selected': ''" ng-click="goToPage('app.addEvent')">
+        <ion-item menu-close ng-class="isThisCurrentState('app.addEvent') ? 'current-selected': ''" ng-click="goToPage('app.addEvent')"> <!-- TODO: ng-if="loggedIn"-->
             Add new event
         </ion-item>
         <ion-item menu-close ng-controller="LoginCtrl" ng-init="isLoggedIn()" ng-if="!loggedIn">

@@ -9735,7 +9735,7 @@ a.button {
   background-color: red; }
 
 #logo-img {
-  margin: 20px 0px;
+  margin: 20px 0;
   width: 100px;
   height: 100px;
   border-radius: 100px; }
@@ -9750,7 +9750,7 @@ a.button {
     max-height: 200px; }
   .details-img-container p {
     background-color: rgba(0, 0, 0, 0.7);
-    bottom: 0%;
+    bottom: 0;
     color: white;
     font-family: Roboto;
     font-size: 1.25em;
@@ -9759,7 +9759,7 @@ a.button {
     position: absolute; }
 
 .month-splitter {
-  margin: 10px 0px 2px 0px;
+  margin: 10px 0 2px;
   font-weight: bold; }
 
 .info-icon {
@@ -9792,7 +9792,7 @@ a.button {
         height: 50px; }
 
 .details-link {
-  margin: 0px 30px; }
+  margin: 0 30px; }
 
 .dark {
   background-color: #232228 !important;
@@ -9812,14 +9812,15 @@ a.button {
       background-color: #2b2b2b !important;
       border-top: 1px solid #464646 !important;
       border-bottom: 2px solid #333333 !important; }
-      .dark .item.current p, .dark .item.current h3 {
-        opacity: .7; }
+      .dark .item.current h3,
+      .dark .item.current p {
+        opacity: 0.7; }
   .dark .current-selected {
     border-left: 5px solid #f4511e; }
+  .dark a,
   .dark h2,
   .dark h3,
-  .dark p,
-  .dark a {
+  .dark p {
     color: rgba(255, 255, 255, 0.7); }
 
 .item-thumbnail-right img {

@@ -20,12 +20,14 @@ angular.module('geekeventsApp.controllers', [])
 			}, {
 				menuText: 'Other Events',
 				state: 'app.otherEvents'
-			}]
+			}];
 
 			$scope.headline = "All Events";
 			$scope.eventList = {};
 			$scope.currentMonthYear = "";
 			$scope.loggedIn = userFactory.isLoggedIn();
+			$scope.facebookevent = true;
+
 
 			$scope.getEvents = function(state) {
 				switch (state) {
@@ -60,7 +62,7 @@ angular.module('geekeventsApp.controllers', [])
 						getEventsByType('other');
 						break;
 				}
-			}
+			};
 
 			$scope.goToPage = function(state) {
 				//changing page dosnt look good atm, fix it.
@@ -78,11 +80,11 @@ angular.module('geekeventsApp.controllers', [])
 					$scope.getEvents(state);
 					$state.go(state);
 				}
-			}
+			};
 
 			function setTitle(state) {
 				if (state === "app.addEvent") {
-					$scope.headline = "Add new event"
+					$scope.headline = "Add new event";
 				} else {
 					for (var item in $scope.menuOptions) {
 						if ($scope.menuOptions[item].state === state) {
@@ -96,7 +98,7 @@ angular.module('geekeventsApp.controllers', [])
 
 			$scope.isThisCurrentState = function(state) {
 				return state == $state.current.name;
-			}
+			};
 
 			function getEventsByType(type) {
 				apiFactory.getEventsByType(type).success(function(result) {
@@ -117,7 +119,7 @@ angular.module('geekeventsApp.controllers', [])
 					$scope.currentMonthYear = new Date(date);
 					return true;
 				}
-			}
+			};
 
 			$scope.facebookSignOut = function() {
 				facebookConnectPlugin.logout(function() {
@@ -131,7 +133,7 @@ angular.module('geekeventsApp.controllers', [])
 					function(fail) {
 						//could not log out
 					});
-			}
+			};
 
 			$scope.$watch(function() {
 				return userFactory.loggedIn;
@@ -152,7 +154,7 @@ angular.module('geekeventsApp.controllers', [])
 .controller('DetailsCtrl', ['$scope', '$stateParams', function($scope, $stateParams) {
 	$scope.initDetails = function() {
 		$scope.selectedEvent = $stateParams.eventInfo;
-	}
+	};
 }])
 
 //make separate file, read more about facebook login
@@ -171,7 +173,7 @@ angular.module('geekeventsApp.controllers', [])
 		} else {
 			userFactory.setLoginStatus(false);
 		}
-	}
+	};
 
 	var fbLoginSuccess = function(response) {
 		if (!response.authResponse) {
