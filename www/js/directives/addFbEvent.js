@@ -40,7 +40,7 @@ angular.module('eventAdderFacebook', [])
 							event.price = 0;
 						}
 
-						if (result.place) { //more checks ?
+						if (result.place) { //more checks ? will probably bug if address sucks
 							event.address = {
 								street: result.place.location.street,
 								zip_code: result.place.location.zip,

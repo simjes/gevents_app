@@ -1,9 +1,56 @@
----Fill in information about the non fb event
-
-<form name="eventForm" ng-submit="" novalidate> <!-- ng-submit="postEvent(eventForm)", form validation -->
+<form name="eventForm" novalidate> <!-- ng-submit="postEvent(eventForm)", form validation -->
   <div class="list">
     <label class="item item-input">
-      <input type="text" placeholder="event name" required="true">
+        <span class="input-label">Event name:</span>
+      <input type="text" name="eventName" ng-model="eventName" required="true">
+    </label>
+    <label class="item">
+      <ion-checkbox class="checkbox-calm" name="gamingEvent" ng-model="lan" ng-required="atleastOneType()">Gaming</ion-checkbox>
+      <ion-checkbox class="checkbox-calm" name="cosplayEvent" ng-model="cosplay" ng-required="atleastOneType()">Cosplay</ion-checkbox>
+      <ion-checkbox class="checkbox-calm" name="boardEvent" ng-model="board" ng-required="atleastOneType()">Board games</ion-checkbox>
+      <ion-checkbox class="checkbox-calm" name="otherEvent" ng-model="other" ng-required="atleastOneType()">Other</ion-checkbox>
+    </label>
+    <label class="item item-input">
+        <span class="input-label">Description:</span>
+      <input type="text" name="description" ng-model="description" required="true">
+    </label>
+    <label class="item item-input">
+        <span class="input-label">Start date:</span>
+      <input type="date" name="startDate" ng-model="startDate" required="true">
+    </label>
+    <label class="item item-input">
+        <span class="input-label">End date:</span>
+      <input type="date" name="endDate" ng-model="endDate" required="true">
+    </label>
+    <div class="item item-divider">
+      Location:
+    </div>
+    <label class="item item-input">
+        <span class="input-label">Street:</span>
+      <input type="text" name="locationStreet" ng-model="locationStreet" required="true">
+    </label>
+    <label class="item item-input">
+        <span class="input-label">Zip code:</span>
+      <input type="text" name="locationZip" ng-model="locationZip" required="true">
+    </label>
+    <label class="item item-input">
+        <span class="input-label">City:</span>
+      <input type="text" name="locationCity" ng-model="locationCity" required="true">
+    </label>
+    <div class="item item-divider">
+      Optional information:
+    </div>
+    <label class="item item-input">
+        <span class="input-label">Event image link:</span>
+      <input type="text" name="imageLink" ng-model="imageLink" required="true">
+    </label>
+    <label class="item item-input">
+        <span class="input-label">Buy tickets link:</span>
+      <input type="text" name="ticketLink" ng-model="ticketLink" required="true">
+    </label>
+    <label class="item item-input">
+        <span class="input-label">Price:</span>
+      <input type="text" name="price" ng-model="price" required="true">
     </label>
   </form>
 

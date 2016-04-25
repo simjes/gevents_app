@@ -20,14 +20,16 @@
       Optional information:
     </div>
     <label class="item item-input">
-      <input type="text" name="ticketLink" ng-model="ticketLink" placeholder="Link to buying tickets">
+        <span class="input-label">Buy tickets link:</span>
+      <input type="text" name="ticketLink" ng-model="ticketLink">
     </label>
     <label class="item item-input">
-      <input type="number" name="price" ng-model="price" placeholder="Price in NOK">
+        <span class="input-label">Price:</span>
+      <input type="number" name="price" ng-model="price">
     </label>
 <!--
     <label class="item item-input">
-         TODO: find good way for hosts 
+         TODO: find good way for hosts
       <input type="text" placeholder="placeholder for host information">
   </label> -->
     <div class="item" ng-show="facebookForm.$invalid || isNotValidFacebookEvent()">
