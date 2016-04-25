@@ -2,7 +2,7 @@
     <img ng-if="event.img" ng-src="{{event.img}}" />
     <!-- need stock img -->
     <img ng-if="!event.img" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg" />
-    <p>Price: {{event.price}},-</p>
+    <p ng-if="event.price != 0">Price: {{event.price}},-</p>
 </div>
 
 <div class="row text-center">
@@ -20,7 +20,7 @@
     </div>
 </div> -->
 
-<div class="row row-center">
+<div class="row row-center"> <!-- ng-if? -->
     <div class="col col-20 text-center">
         <i class="icon ion-ios-clock info-icon"></i>
     </div>
@@ -30,7 +30,7 @@
         <b>End:</b> {{event.date_end | date:"dd/MM/yyyy 'at' H:mm"}}
     </div>
 </div>
-<div class="row row-center">
+<div class="row row-center" ng-if="event.address">
     <div class="col col-20 text-center">
         <i class="icon ion-location info-icon"> </i>
     </div>
@@ -46,7 +46,7 @@
         </a>
     </div>
 </div>
-<div class="row row-center">
+<div class="row row-center" ng-if="event.web_link">
     <div class="col col-20 text-center">
         <i class="icon ion-ios-browsers info-icon"> </i>
     </div>
@@ -62,13 +62,13 @@
         <a href="#" ng-click="openExternal('{{event.fb_link}}')">Go to Facebook event</a>
     </div>
 </div>
-<div class="text-center">Hosted by:</div>
+<div class="row row-center" ng-if="event.description">
+    {{event.description}}
+</div>
+
+<!-- <div class="text-center">Hosted by:</div>
 <div ng-repeat="host in event.hosts" ng-if="$index%2==0" class="row host-list">
     <host-details class="col card-limiter" ng-class="event.hosts.length === 1 ? '' : ($index%2==0 && $index != (event.hosts.length - 1)  ? 'col-50' : '')"
     ng-if="$index < event.hosts.length" host="host"></host-details>
     <host-details class="col col-50 card-limiter" ng-if="($index + 1) < event.hosts.length" host="event.hosts[$index+1]"></host-details>
-</div>
-
-<div class="row">
-    <!-- TODO: map of location -->
-</div>
+</div> -->

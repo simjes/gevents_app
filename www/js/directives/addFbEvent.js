@@ -21,11 +21,12 @@ angular.module('eventAdderFacebook', [])
 							fb_link: 'https://www.facebook.com/events/' + eventId,
 							web_link: result.ticket_uri,
 							address: {
+								/*
 								street: result.place.location.street,
 								zip_code: result.place.location.zip,
-								city: result.place.location.city
+								city: result.place.location.city*/
 							},
-							loc: [result.place.location.latitude, result.place.location.longitude],
+							loc: [],//[result.place.location.latitude, result.place.location.longitude],
 							price: $scope.price,
 							hosts: [],
 							uploader: {
@@ -34,6 +35,20 @@ angular.module('eventAdderFacebook', [])
 								mail: userInfo.email
 							}
 						};
+
+						if ($scope.price == null) {
+							event.price = 0;
+						}
+
+						if (result.place) { //more checks ?
+							event.address = {
+								street: result.place.location.street,
+								zip_code: result.place.location.zip,
+								city: result.place.location.city
+							};
+							event.log = [result.place.location.latitude, result.place.location.longitude];
+						}
+
 						apiFactory.addEvent(event).success(function(result) {
 							console.log(result);
 						});

@@ -25,10 +25,11 @@
     <label class="item item-input">
       <input type="number" name="price" ng-model="price" placeholder="Price in NOK">
     </label>
+<!--
     <label class="item item-input">
-        <!-- TODO: find good way for hosts -->
+         TODO: find good way for hosts 
       <input type="text" placeholder="placeholder for host information">
-    </label>
+  </label> -->
     <div class="item" ng-show="facebookForm.$invalid || isNotValidFacebookEvent()">
       <p ng-show="isNotValidFacebookEvent()">* The facebook link is not valid</p>
       <p ng-show="atleastOneType()">* Must choose atleast one type</p>
