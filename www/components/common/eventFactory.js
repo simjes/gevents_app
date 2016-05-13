@@ -19,7 +19,7 @@ angular.module('geekeventsApp')
 		//add events
 		apiFactory.addEvent = function(eventInfo) {
 			return $http.post(ApiEndpoint.url + "/events", JSON.stringify(eventInfo));
-		}
+		};
 
 		apiFactory.getEventDetails = function(eventId) {
 			return $http.get(ApiEndpoint.url + "/events/" + eventId);
