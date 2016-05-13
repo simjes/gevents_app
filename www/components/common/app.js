@@ -1,9 +1,3 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'geekeventsApp' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'geekeventsApp.controllers' is found in controllers.js
 angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEvent', 'eventDetails', 'hostDetails', 'eventAdderFacebook', 'eventAdder', 'ngCordova'])
 	.constant('ApiEndpoint', {
 		url: 'http://51.174.85.200:3000/api' //TODO:  http://localhost:8100/api
