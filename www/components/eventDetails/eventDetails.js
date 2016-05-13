@@ -5,7 +5,7 @@ angular.module('eventDetails', [])
             scope: {
                 event: '='
             },
-            templateUrl: './templates/directives/eventDetails.html',
+            templateUrl: '/components/eventDetails/eventDetails.html',
             replace: false,
             controller: ['$scope', function($scope) {
                 $scope.isType = function(type) {
@@ -14,11 +14,11 @@ angular.module('eventDetails', [])
                     } else {
                         return true;
                     }
-                }
+                };
 
                 $scope.openExternal = function (page) {
                     window.open(page, '_system');
-                }
+                };
             }]
-        }
+        };
     });

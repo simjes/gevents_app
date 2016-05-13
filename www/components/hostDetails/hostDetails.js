@@ -5,13 +5,13 @@ angular.module('hostDetails', [])
             scope: {
                 host: '='
             },
-            templateUrl: './templates/directives/hostDetails.html',
+            templateUrl: '/components/hostDetails/hostDetails.html',
             replace: false,
             controller: ['$scope', function($scope) {
                 $scope.openExternal = function (page) {
                     window.open(page, '_system');
-                }
+                };
             }]
             //get host info here? or store with event(current)
-        }
+        };
     });

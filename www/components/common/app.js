@@ -23,14 +23,14 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEve
 			.state('app', {
 				url: '/app',
 				abstract: true,
-				templateUrl: 'components/mainPage/menu.html',
+				templateUrl: '/components/menuPage/menu.html',
 				controller: 'MenuCtrl'
 			})
 			.state('app.allEvents', {
 				url: '/allEvents',
 				views: {
 					'menuContent': {
-						templateUrl: 'compontents/common/eventList.html'
+						templateUrl: '/components/common/eventList.html'
 					}
 				}
 			})
@@ -38,7 +38,7 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEve
 				url: '/localEvents',
 				views: {
 					'menuContent': {
-						templateUrl: 'compontents/common/eventList.html'
+						templateUrl: '/components/common/eventList.html'
 					}
 				}
 			})
@@ -46,7 +46,7 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEve
 				url: '/gameEvents',
 				views: {
 					'menuContent': {
-						templateUrl: 'compontents/common/eventList.html'
+						templateUrl: '/components/common/eventList.html'
 					}
 				}
 			})
@@ -54,7 +54,7 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEve
 				url: '/cosplayEvents',
 				views: {
 					'menuContent': {
-						templateUrl: 'compontents/common/eventList.html'
+						templateUrl: '/components/common/eventList.html'
 					}
 				}
 			})
@@ -62,7 +62,7 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEve
 				url: '/boardEvents',
 				views: {
 					'menuContent': {
-						templateUrl: 'compontents/common/eventList.html'
+						templateUrl: '/components/common/eventList.html'
 					}
 				}
 			})
@@ -70,7 +70,7 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEve
 				url: '/otherEvents',
 				views: {
 					'menuContent': {
-						templateUrl: 'compontents/common/eventList.html'
+						templateUrl: '/components/common/eventList.html'
 					}
 				}
 			})
@@ -81,7 +81,7 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEve
 				},
 				views: {
 					'menuContent': {
-						templateUrl: 'components/eventDetails/detailsOfEvent.html',
+						templateUrl: '/components/eventDetails/detailsOfEvent.html',
 						controller: 'DetailsCtrl'
 					}
 				}
@@ -90,7 +90,7 @@ angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEve
 				url: '/addEvent',
 				views: {
 					'menuContent': {
-						templateUrl: 'components/common/addEvent.html'
+						templateUrl: '/components/common/addEvent.html'
 					}
 				},
 				/*resolve: { TODO: add this again

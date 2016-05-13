@@ -5,7 +5,7 @@ angular.module('shortEvent', [])
 			scope: {
 				event: '='
 			},
-			templateUrl: './templates/directives/shortEvent.html', //feil?
+			templateUrl: '/components/shortEvent/shortEvent.html', //feil?
 			replace: false,
 			controller: ['$scope', '$state', '$ionicHistory', 'apiFactory', function($scope, $state, $ionicHistory, apiFactory) {
 				$scope.getEventDetails = function(eventId) {
@@ -14,7 +14,7 @@ angular.module('shortEvent', [])
 							eventInfo: result
 						});
 					});
-				}
+				};
 
 				$scope.isType = function(type) {
 					if ($scope.event.type.indexOf(type) === -1) {
@@ -22,7 +22,7 @@ angular.module('shortEvent', [])
 					} else {
 						return true;
 					}
-				}
+				};
 			}]
-		}
+		};
 	});

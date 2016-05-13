@@ -1,5 +1,5 @@
-angular.module('geekeventsApp.controllers', [])
-.controller('LoginCtrl', ['$scope', '$state', '$q', 'userFactory', '$ionicLoading', function($scope, $state, $q, userFactory, $ionicLoading) {
+var ctrlModule = angular.module('geekeventsApp.controllers');
+ctrlModule.controller('LoginCtrl', ['$scope', '$state', '$q', 'userFactory', '$ionicLoading', function($scope, $state, $q, userFactory, $ionicLoading) {
 	$scope.loggedIn = userFactory.isLoggedIn();
 
 	$scope.$watch(function() {
