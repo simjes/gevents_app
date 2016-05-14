@@ -6,9 +6,9 @@
       <div style="text-align:center;" ng-if="!eventList[0]">No events here</div>
       <!-- get a cool icon instead -->
       <div collection-repeat="event in eventList">
-        <div ng-if="newMonth(event.date_start)" class="month-splitter text-center">
+        <!-- <div ng-if="newMonth(event.date_start)" class="text-center item item-divider">
           {{event.date_start | date: "MMMM yyyy"}}
-        </div>
+        </div>-->
         <short-event event="event"></short-event>
       </div>
     </ion-list>

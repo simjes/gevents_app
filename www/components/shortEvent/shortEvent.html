@@ -2,7 +2,7 @@
     <img ng-if="event.img" ng-src="{{event.img}}" />
     <!-- TODO: img and stock images -->
     <img ng-if="!event.img" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg" />
-    <h2>{{event.name}}</h2>
+    <h2><b>{{event.name}}</b></h2>
     <p>
         <i class="icon ion-ios-clock info-icon-eventlist"> </i> {{event.date_start | date:"dd/MM/yyyy 'at' H:mm"}}
     </p>
