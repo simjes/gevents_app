@@ -11,7 +11,7 @@
     </p>
     <!--<p>End: {{event.date_end |date:"MM/dd/yyyy 'at' h:mma"}}</p>-->
     <!-- icons by type -->
-    <div class="text-center">
+    <div class="text-center" ng-if="event.type">
         <i class="icon ion-ios-game-controller-a type-icon-list" ng-class="isType('lan') ? '' : 'icon-inactive'" title="Lan"></i>
         <i class="icon ion-tshirt type-icon-list" ng-class="isType('cosplay') ? '' : 'icon-inactive'" title="Cosplay"></i>
         <i class="icon ion-compose type-icon-list" ng-class="isType('board') ? '' : 'icon-inactive'" title="Board Games"></i>
