@@ -5,7 +5,7 @@ angular.module('hostDetails', [])
             scope: {
                 host: '='
             },
-            templateUrl: '/components/hostDetails/hostDetails.html',
+            templateUrl: 'components/hostDetails/hostDetails.html',
             replace: false,
             controller: ['$scope', function($scope) {
                 $scope.openExternal = function (page) {

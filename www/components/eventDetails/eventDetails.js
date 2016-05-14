@@ -5,7 +5,7 @@ angular.module('eventDetails', [])
             scope: {
                 event: '='
             },
-            templateUrl: '/components/eventDetails/eventDetails.html',
+            templateUrl: 'components/eventDetails/eventDetails.html',
             replace: false,
             controller: ['$scope', function($scope) {
                 $scope.isType = function(type) {

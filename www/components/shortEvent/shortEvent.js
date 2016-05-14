@@ -5,7 +5,7 @@ angular.module('shortEvent', [])
 			scope: {
 				event: '='
 			},
-			templateUrl: '/components/shortEvent/shortEvent.html', //feil?
+			templateUrl: 'components/shortEvent/shortEvent.html', //feil?
 			replace: false,
 			controller: ['$scope', '$state', '$ionicHistory', 'apiFactory', function($scope, $state, $ionicHistory, apiFactory) {
 				$scope.getEventDetails = function(eventId) {

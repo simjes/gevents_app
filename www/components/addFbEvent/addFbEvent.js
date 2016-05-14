@@ -2,7 +2,7 @@ angular.module('eventAdderFacebook', [])
 	.directive('eventAdderFacebook', function() {
 		return {
 			restrict: 'E',
-			templateUrl: '/components/addFbEvent/addFbEvent.html',
+			templateUrl: 'components/addFbEvent/addFbEvent.html',
 			replace: false,
 			controller: ['$scope', 'apiFactory', 'userFactory', 'facebookEventFactory', function($scope, apiFactory, userFactory, facebookEventFactory) { //factory for getting event info
 				var eventId = 0;
