@@ -116,7 +116,7 @@ angular.module('geekeventsApp.controllers', [])
         });
       }
 
-      $scope.newMonth = function(date) {
+      /*$scope.newMonth = function(date) {
         var dateObj = new Date(date);
 
         if ($scope.currentMonthYear === "") {
@@ -128,7 +128,7 @@ angular.module('geekeventsApp.controllers', [])
           $scope.currentMonthYear = new Date(date);
           return true;
         }
-      };
+      };*/
 
       $scope.refreshEvents = function() {
         $scope.getEvents($state.current.name);
