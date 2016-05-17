@@ -17,7 +17,7 @@ angular.module('shortEvent', [])
 				};
 
 				$scope.isType = function(type) {
-					return $scope.event.type.indexOf(type) === -1;
+					return $scope.event.type.indexOf(type) !== -1;
 				};
 			}]
 		};
