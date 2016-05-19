@@ -9,11 +9,7 @@ angular.module('eventDetails', [])
             replace: false,
             controller: ['$scope', function($scope) {
                 $scope.isType = function(type) {
-                    if ($scope.event.type.indexOf(type) === -1) {
-                        return false;
-                    } else {
-                        return true;
-                    }
+                    return $scope.event.type.indexOf(type) !== -1;
                 };
 
                 $scope.openExternal = function (page) {

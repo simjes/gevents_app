@@ -27,11 +27,6 @@
         <span class="input-label">Price:</span>
       <input type="number" name="price" ng-model="price">
     </label>
-<!--
-    <label class="item item-input">
-         TODO: find good way for hosts
-      <input type="text" placeholder="placeholder for host information">
-  </label> -->
     <div class="item" ng-show="facebookForm.$invalid || isNotValidFacebookEvent()">
       <p ng-show="isNotValidFacebookEvent()">* The facebook link is not valid</p>
       <p ng-show="atleastOneType()">* Must choose atleast one type</p>
@@ -40,6 +35,4 @@
       Submit event
     </button>
   </form>
-
-  <!-- type of event(checkbox), web_link, price, host information, address??? -->
 </div>

@@ -26,7 +26,7 @@ angular.module('eventAdderFacebook', [])
 								zip_code: result.place.location.zip,
 								city: result.place.location.city*/
 							},
-							loc: [],//[result.place.location.latitude, result.place.location.longitude],
+							loc: [], //[result.place.location.latitude, result.place.location.longitude],
 							price: $scope.price,
 							hosts: [],
 							uploader: {
@@ -52,9 +52,7 @@ angular.module('eventAdderFacebook', [])
 						apiFactory.addEvent(event).success(function(result) {
 							console.log(result);
 						});
-						console.log(event);
 					});
-					console.log(form);
 				};
 
 				function getTypes() {
