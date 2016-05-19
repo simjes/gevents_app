@@ -7,7 +7,7 @@ angular.module('eventAdderFacebook', [])
 			controller: ['$scope', 'apiFactory', 'userFactory', 'facebookEventFactory', function($scope, apiFactory, userFactory, facebookEventFactory) { //factory for getting event info
 				var eventId = 0;
 
-				//TODO: handle hosts
+				//TODO: use stock photo if facebook does not have
 				$scope.submitEvent = function(form) {
 					facebookEventFactory.getEventDetails(eventId).success(function(result) {
 						var userInfo = userFactory.getUser();

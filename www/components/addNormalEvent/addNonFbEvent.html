@@ -1,7 +1,10 @@
 <form name="eventForm" novalidate>
   <div class="list">
+    <div class="item item-divider">
+      Event information:
+    </div>
     <label class="item item-input">
-        <span class="input-label">Event name:</span>
+      <span class="input-label">Event name:</span>
       <input type="text" name="eventName" ng-model="eventName" required="true">
     </label>
     <label class="item">
@@ -11,45 +14,45 @@
       <ion-checkbox class="checkbox-calm" name="otherEvent" ng-model="other" ng-required="atleastOneType()">Other</ion-checkbox>
     </label>
     <label class="item item-input">
-        <span class="input-label">Description:</span>
+      <span class="input-label">Description:</span>
       <input type="text" name="description" ng-model="description" required="true">
     </label>
     <label class="item item-input">
-        <span class="input-label">Start date:</span>
-      <input type="date" name="startDate" ng-model="startDate" required="true">
+      <span class="input-label">Start date:</span>
+      <input type="datetime-local" name="startDate" ng-model="startDate" required="true">
     </label>
     <label class="item item-input">
-        <span class="input-label">End date:</span>
-      <input type="date" name="endDate" ng-model="endDate" required="true">
+      <span class="input-label">End date:</span>
+      <input type="datetime-local" name="endDate" ng-model="endDate" required="true">
     </label>
     <div class="item item-divider">
       Location:
     </div>
     <label class="item item-input">
-        <span class="input-label">Street:</span>
+      <span class="input-label">Street:</span>
       <input type="text" name="locationStreet" ng-model="locationStreet" required="true">
     </label>
     <label class="item item-input">
-        <span class="input-label">Zip code:</span>
+      <span class="input-label">Zip code:</span>
       <input type="text" name="locationZip" ng-model="locationZip" required="true">
     </label>
     <label class="item item-input">
-        <span class="input-label">City:</span>
+      <span class="input-label">City:</span>
       <input type="text" name="locationCity" ng-model="locationCity" required="true">
     </label>
     <div class="item item-divider">
       Optional information:
     </div>
     <label class="item item-input">
-        <span class="input-label">Event image link:</span>
+      <span class="input-label">Event image link:</span>
       <input type="text" name="imageLink" ng-model="imageLink" required="true">
     </label>
     <label class="item item-input">
-        <span class="input-label">Buy tickets link:</span>
+      <span class="input-label">Buy tickets link:</span>
       <input type="text" name="ticketLink" ng-model="ticketLink" required="true">
     </label>
     <label class="item item-input">
-        <span class="input-label">Price:</span>
+      <span class="input-label">Price:</span>
       <input type="text" name="price" ng-model="price" required="true">
     </label>
     <button class="button button-block button-calm" ng-disabled="" ng-click="submitEvent(eventForm)">

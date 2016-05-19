@@ -5,7 +5,7 @@ angular.module('eventAdder', [])
 			templateUrl: 'components/addNormalEvent/addNonFbEvent.html',
 			replace: false,
 			controller: ['$scope', 'apiFactory', 'userFactory', '$http', function($scope, apiFactory, userFactory, $http) {
-				//TODO: get lat and lng from google maps from address.
+				//TODO: use stock photo if user does not provide one
 				$scope.submitEvent = function(form) {
 					var userInfo = userFactory.getUser();
 					var event = {
@@ -47,8 +47,6 @@ angular.module('eventAdder', [])
 
 				function getCoordinates(address) {
 					//make factory?
-					var googleQuery = 'http://maps.google.com/maps/api/geocode/json?address=' + address.zip_code + '+' + address.city + '+' + address.street;
-					console.log(googleQuery);
 					return $http.get('http://maps.google.com/maps/api/geocode/json?address=' + address.zip_code + '+' + address.city + '+' + address.street);
 				}
 
