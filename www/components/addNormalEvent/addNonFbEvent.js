@@ -45,6 +45,12 @@ angular.module('eventAdder', [])
 					return $scope.lan || $scope.cosplay || $scope.board || $scope.other ? false : true; //if one is checked, required is false
 				};
 
+				$scope.greaterThanStart = function() {
+					if (new Date($scope.endDate) < new Date($scope.startDate)) {
+							console.log("error: end date is lower than start date");
+					}
+				};
+
 				function getCoordinates(address) {
 					//make factory?
 					return $http.get('http://maps.google.com/maps/api/geocode/json?address=' + address.zip_code + '+' + address.city + '+' + address.street);

@@ -3,10 +3,15 @@
     <div class="item item-divider">
       Event information:
     </div>
-    <label class="item item-input">
+    <label class="item item-input" ng-class="{ 'has-error' : eventForm.eventName.$invalid}">
       <span class="input-label">Event name:</span>
       <input type="text" name="eventName" ng-model="eventName" required="true">
     </label>
+
+    <div class="form-errors" ng-messages="eventForm.eventName.$error">
+      <div ng-messages-include="templates/form-errors.html"></div>
+    </div>
+
     <label class="item">
       <ion-checkbox class="checkbox-calm" name="gamingEvent" ng-model="lan" ng-required="atleastOneType()">Gaming</ion-checkbox>
       <ion-checkbox class="checkbox-calm" name="cosplayEvent" ng-model="cosplay" ng-required="atleastOneType()">Cosplay</ion-checkbox>
@@ -23,7 +28,7 @@
     </label>
     <label class="item item-input">
       <span class="input-label">End date:</span>
-      <input type="datetime-local" name="endDate" ng-model="endDate" required="true">
+      <input type="datetime-local" name="endDate" ng-model="endDate" ng-change="greaterThanStart()" required="true">
     </label>
     <div class="item item-divider">
       Location:
@@ -59,6 +64,9 @@
       Submit event
     </button>
   </form>
-
+  <!-- TODO: move this -->
+  <script id="templates/form-errors.html" type="text/ng-template">
+    <div class="form-error" ng-message="required">This field is required.</div>
+  </script>
   <!-- need to fill in everything -->
 </div>
