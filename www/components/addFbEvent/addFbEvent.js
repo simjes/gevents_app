@@ -9,6 +9,7 @@ angular.module('eventAdderFacebook', [])
 
 				//TODO: use stock photo if facebook does not have
 				$scope.submitEvent = function(form) {
+					console.log("i was called");
 					facebookEventFactory.getEventDetails(eventId).success(function(result) {
 						var userInfo = userFactory.getUser();
 						var event = {

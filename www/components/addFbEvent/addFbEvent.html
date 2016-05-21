@@ -1,4 +1,4 @@
-<form name="facebookForm" novalidate>
+<form name="facebookForm" novalidate ng-submit="facebookForm.$valid && submitEvent(facebookForm)">
   <!-- , form validation -->
   <div class="list">
     <div class="item item-divider">
@@ -11,10 +11,10 @@
       The event is related to:
     </div>
     <label class="item">
-      <ion-checkbox class="checkbox-calm" name="gamingEvent" ng-model="lan" ng-required="atleastOneType()">Gaming</ion-checkbox>
-      <ion-checkbox class="checkbox-calm" name="cosplayEvent" ng-model="cosplay" ng-required="atleastOneType()">Cosplay</ion-checkbox>
-      <ion-checkbox class="checkbox-calm" name="boardEvent" ng-model="board" ng-required="atleastOneType()">Board games</ion-checkbox>
-      <ion-checkbox class="checkbox-calm" name="otherEvent" ng-model="other" ng-required="atleastOneType()">Other</ion-checkbox>
+      <ion-checkbox class="checkbox-calm" name="gamingEvent" ng-model="lan" ng-required="atleastOneType()" ng-class="{ 'type-has-error' : atleastOneType() && facebookForm.$submitted}">Gaming</ion-checkbox>
+      <ion-checkbox class="checkbox-calm" name="cosplayEvent" ng-model="cosplay" ng-required="atleastOneType()" ng-class="{ 'type-has-error' : atleastOneType() && facebookForm.$submitted}">Cosplay</ion-checkbox>
+      <ion-checkbox class="checkbox-calm" name="boardEvent" ng-model="board" ng-required="atleastOneType()" ng-class="{ 'type-has-error' : atleastOneType() && facebookForm.$submitted}">Board games</ion-checkbox>
+      <ion-checkbox class="checkbox-calm" name="otherEvent" ng-model="other" ng-required="atleastOneType()" ng-class="{ 'type-has-error' : atleastOneType() && facebookForm.$submitted}">Other</ion-checkbox>
     </label>
     <div class="item item-divider">
       Optional information:
@@ -31,8 +31,6 @@
       <p ng-show="isNotValidFacebookEvent()">* The facebook link is not valid</p>
       <p ng-show="atleastOneType()">* Must choose atleast one type</p>
     </div>
-    <button class="button button-block button-calm" ng-disabled="facebookForm.$invalid || isNotValidFacebookEvent()" ng-click="submitEvent(facebookForm)">
-      Submit event
-    </button>
+    <input class="button button-block button-calm" type="submit" value="Submit event"></input>
   </form>
 </div>

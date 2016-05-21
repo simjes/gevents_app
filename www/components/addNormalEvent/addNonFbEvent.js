@@ -7,6 +7,7 @@ angular.module('eventAdder', [])
 			controller: ['$scope', 'apiFactory', 'userFactory', '$http', function($scope, apiFactory, userFactory, $http) {
 				//TODO: use stock photo if user does not provide one
 				$scope.submitEvent = function(form) {
+					console.log("i was called");
 					var userInfo = userFactory.getUser();
 					var event = {
 						name: $scope.eventName,

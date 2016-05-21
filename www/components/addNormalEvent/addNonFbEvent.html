@@ -1,4 +1,4 @@
-<form name="eventForm" novalidate submit="submitEvent(eventForm)">
+<form name="eventForm" novalidate ng-submit="eventForm.$valid && submitEvent(eventForm)">
   <div class="list">
     <div class="item item-divider">
       Event information:
@@ -93,9 +93,7 @@
       <span class="input-label">Price:</span>
       <input type="number" name="price" ng-model="price">
     </label>
-    <button class="button button-block button-calm" ng-click="submitEvent(eventForm)">
-      Submit event
-    </button>
+    <input class="button button-block button-calm" type="submit" value="Submit event"></input>
   </form>
   <!-- need to fill in everything -->
 </div>
