@@ -95,6 +95,9 @@ $calm: #f4511e !default; // Include all of Ionic
 label.item.has-error {
   border-bottom: 2px solid red;
 }
+label.item.type-has-error {
+  border: 1px solid red;
+}
 label.item.valid {
   border-bottom: 2px solid green;
 }
