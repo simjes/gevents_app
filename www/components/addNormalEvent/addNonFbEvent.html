@@ -3,12 +3,12 @@
     <div class="item item-divider">
       Event information:
     </div>
-    <label class="item item-input" ng-class="{ 'has-error' : eventForm.eventName.$invalid && eventForm.$submitted}">
+    <label class="item item-input" ng-class="{'has-error' : eventForm.eventName.$invalid && eventForm.$submitted}">
       <span class="input-label">Event name:</span>
       <input type="text" name="eventName" ng-model="event.name" required="true">
     </label>
 
-    <div class="form-errors" ng-messages="eventForm.eventName.$error" ng-show="eventForm.eventName.$error && eventForm.$submitted">
+    <div ng-messages="eventForm.eventName.$error" ng-show="eventForm.eventName.$error && eventForm.$submitted">
       <div ng-messages-include="components/common/form-errors.html"></div>
     </div>
 
@@ -26,7 +26,7 @@
       <span class="input-label">Description:</span>
       <input type="text" name="description" ng-model="event.description" required="true">
     </label>
-    <div class="form-errors" ng-messages="eventForm.description.$error" ng-show="eventForm.description.$error && eventForm.$submitted">
+    <div ng-messages="eventForm.description.$error" ng-show="eventForm.description.$error && eventForm.$submitted">
       <div ng-messages-include="components/common/form-errors.html"></div>
     </div>
 
@@ -34,7 +34,7 @@
       <span class="input-label">Start date:</span>
       <input type="datetime-local" name="startDate" ng-model="event.date_start" required="true">
     </label>
-    <div class="form-errors" ng-messages="eventForm.startDate.$error" ng-show="eventForm.startDate.$error && eventForm.$submitted">
+    <div ng-messages="eventForm.startDate.$error" ng-show="eventForm.startDate.$error && eventForm.$submitted">
       <div ng-messages-include="components/common/form-errors.html"></div>
     </div>
 
@@ -42,7 +42,7 @@
       <span class="input-label">End date:</span>
       <input type="datetime-local" name="endDate" ng-model="event.date_end" required="true" date-validator>
     </label>
-    <div class="form-errors" ng-messages="eventForm.endDate.$error" ng-show="eventForm.endDate.$error && eventForm.$submitted">
+    <div ng-messages="eventForm.endDate.$error" ng-show="eventForm.endDate.$error && eventForm.$submitted">
       <div ng-messages-include="components/common/form-errors.html"></div>
     </div>
 
@@ -53,15 +53,15 @@
       <span class="input-label">Street:</span>
       <input type="text" name="locationStreet" ng-model="event.address.street" required="true">
     </label>
-    <div class="form-errors" ng-messages="eventForm.locationStreet.$error" ng-show="eventForm.locationStreet.$error && eventForm.$submitted">
+    <div ng-messages="eventForm.locationStreet.$error" ng-show="eventForm.locationStreet.$error && eventForm.$submitted">
       <div ng-messages-include="components/common/form-errors.html"></div>
     </div>
 
     <label class="item item-input" ng-class="{ 'has-error' : eventForm.locationZip.$invalid && eventForm.$submitted}">
       <span class="input-label">Zip code:</span>
-      <input type="number" name="locationZip" ng-model="event.address.zip_code" required="true">
+      <input type="number" name="locationZip" ng-model="event.address.zip_code" minlength="4" maxlength="4" required="true">
     </label>
-    <div class="form-errors" ng-messages="eventForm.locationZip.$error" ng-show="eventForm.locationZip.$error && eventForm.$submitted">
+    <div ng-messages="eventForm.locationZip.$error" ng-show="eventForm.locationZip.$error && eventForm.$submitted">
       <div ng-messages-include="components/common/form-errors.html"></div>
     </div>
 
@@ -69,7 +69,7 @@
       <span class="input-label">City:</span>
       <input type="text" name="locationCity" ng-model="event.address.city" required="true">
     </label>
-    <div class="form-errors" ng-messages="eventForm.locationCity.$error" ng-show="eventForm.locationCity.$error && eventForm.$submitted">
+    <div ng-messages="eventForm.locationCity.$error" ng-show="eventForm.locationCity.$error && eventForm.$submitted">
       <div ng-messages-include="components/common/form-errors.html"></div>
     </div>
 

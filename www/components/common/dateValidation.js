@@ -5,7 +5,7 @@ angular.module('dateValidator', [])
 			require: 'ngModel',
 			link: function($scope, $element, $attrs, ngModel) {
 				//TODO: try to get it to work for both start and end date
-				ngModel.$validators.dateValidation = function(modelValue, viewValue) {
+				ngModel.$validators.dateValidator = function(modelValue, viewValue) {
 					return new Date($scope.event.date_start) < new Date(modelValue);
 				};
 			}

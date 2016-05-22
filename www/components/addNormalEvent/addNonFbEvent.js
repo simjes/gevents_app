@@ -5,7 +5,9 @@ angular.module('eventAdder', [])
 			templateUrl: 'components/addNormalEvent/addNonFbEvent.html',
 			replace: false,
 			controller: ['$scope', 'apiFactory', 'userFactory', '$http', function($scope, apiFactory, userFactory, $http) {
-				$scope.event = {};
+				$scope.event = {
+					hosts:[] //TODO remove
+				};
 				//TODO: use stock photo if user does not provide one
 				$scope.submitEvent = function(form) {
 					console.log("i was called");
@@ -39,10 +41,10 @@ angular.module('eventAdder', [])
 
 				function getTypes() {
 					var types = [];
-					if ($scope.lan) $scope.event.types.push("lan");
-					if ($scope.cosplay) $scope.event.types.push("cosplay");
-					if ($scope.board) $scope.event.types.push("board");
-					if ($scope.other) $scope.event.types.push("other");
+					if ($scope.lan) types.push("lan");
+					if ($scope.cosplay) types.push("cosplay");
+					if ($scope.board) types.push("board");
+					if ($scope.other) types.push("other");
 					return types;
 				}
 			}]
