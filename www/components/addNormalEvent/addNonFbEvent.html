@@ -5,14 +5,17 @@
     </div>
     <label class="item item-input" ng-class="{ 'has-error' : eventForm.eventName.$invalid && eventForm.$submitted}">
       <span class="input-label">Event name:</span>
-      <input type="text" name="eventName" ng-model="eventName" required="true">
+      <input type="text" name="eventName" ng-model="event.name" required="true">
     </label>
 
     <div class="form-errors" ng-messages="eventForm.eventName.$error" ng-show="eventForm.eventName.$error && eventForm.$submitted">
       <div ng-messages-include="components/common/form-errors.html"></div>
     </div>
 
-    <label class="item" >
+    <div class="item item-divider">
+      The event is related to:
+    </div>
+    <label class="item">
       <ion-checkbox class="checkbox-calm" name="gamingEvent" ng-model="lan" ng-required="atleastOneType()" ng-class="{ 'type-has-error' : atleastOneType() && eventForm.$submitted}">Gaming</ion-checkbox>
       <ion-checkbox class="checkbox-calm" name="cosplayEvent" ng-model="cosplay" ng-required="atleastOneType()" ng-class="{ 'type-has-error' : atleastOneType() && eventForm.$submitted}">Cosplay</ion-checkbox>
       <ion-checkbox class="checkbox-calm" name="boardEvent" ng-model="board" ng-required="atleastOneType()" ng-class="{ 'type-has-error' : atleastOneType() && eventForm.$submitted}">Board games</ion-checkbox>
@@ -21,15 +24,15 @@
 
     <label class="item item-input" ng-class="{ 'has-error' : eventForm.description.$invalid && eventForm.$submitted}">
       <span class="input-label">Description:</span>
-      <input type="text" name="description" ng-model="description" required="true">
+      <input type="text" name="description" ng-model="event.description" required="true">
     </label>
     <div class="form-errors" ng-messages="eventForm.description.$error" ng-show="eventForm.description.$error && eventForm.$submitted">
       <div ng-messages-include="components/common/form-errors.html"></div>
     </div>
 
-    <label class="item item-input"  ng-class="{ 'has-error' : eventForm.startDate.$invalid && eventForm.$submitted}">
+    <label class="item item-input" ng-class="{ 'has-error' : eventForm.startDate.$invalid && eventForm.$submitted}">
       <span class="input-label">Start date:</span>
-      <input type="datetime-local" name="startDate" ng-model="startDate" required="true">
+      <input type="datetime-local" name="startDate" ng-model="event.date_start" required="true">
     </label>
     <div class="form-errors" ng-messages="eventForm.startDate.$error" ng-show="eventForm.startDate.$error && eventForm.$submitted">
       <div ng-messages-include="components/common/form-errors.html"></div>
@@ -37,12 +40,10 @@
 
     <label class="item item-input" ng-class="{ 'has-error' : eventForm.endDate.$invalid && eventForm.$submitted}">
       <span class="input-label">End date:</span>
-      <input type="datetime-local" name="endDate" ng-model="endDate" required="true">
+      <input type="datetime-local" name="endDate" ng-model="event.date_end" required="true" date-validator>
     </label>
     <div class="form-errors" ng-messages="eventForm.endDate.$error" ng-show="eventForm.endDate.$error && eventForm.$submitted">
-      <div ng-messages-include="components/common/form-errors.html">
-
-      </div>
+      <div ng-messages-include="components/common/form-errors.html"></div>
     </div>
 
     <div class="item item-divider">
@@ -50,32 +51,26 @@
     </div>
     <label class="item item-input" ng-class="{ 'has-error' : eventForm.locationStreet.$invalid && eventForm.$submitted}">
       <span class="input-label">Street:</span>
-      <input type="text" name="locationStreet" ng-model="locationStreet" required="true">
+      <input type="text" name="locationStreet" ng-model="event.address.street" required="true">
     </label>
     <div class="form-errors" ng-messages="eventForm.locationStreet.$error" ng-show="eventForm.locationStreet.$error && eventForm.$submitted">
-      <div ng-messages-include="components/common/form-errors.html">
-
-      </div>
+      <div ng-messages-include="components/common/form-errors.html"></div>
     </div>
 
     <label class="item item-input" ng-class="{ 'has-error' : eventForm.locationZip.$invalid && eventForm.$submitted}">
       <span class="input-label">Zip code:</span>
-      <input type="number" name="locationZip" ng-model="locationZip" required="true">
+      <input type="number" name="locationZip" ng-model="event.address.zip_code" required="true">
     </label>
     <div class="form-errors" ng-messages="eventForm.locationZip.$error" ng-show="eventForm.locationZip.$error && eventForm.$submitted">
-      <div ng-messages-include="components/common/form-errors.html">
-
-      </div>
+      <div ng-messages-include="components/common/form-errors.html"></div>
     </div>
 
     <label class="item item-input" ng-class="{ 'has-error' : eventForm.locationCity.$invalid && eventForm.$submitted}">
       <span class="input-label">City:</span>
-      <input type="text" name="locationCity" ng-model="locationCity" required="true">
+      <input type="text" name="locationCity" ng-model="event.address.city" required="true">
     </label>
     <div class="form-errors" ng-messages="eventForm.locationCity.$error" ng-show="eventForm.locationCity.$error && eventForm.$submitted">
-      <div ng-messages-include="components/common/form-errors.html">
-
-      </div>
+      <div ng-messages-include="components/common/form-errors.html"></div>
     </div>
 
     <div class="item item-divider">
@@ -83,17 +78,18 @@
     </div>
     <label class="item item-input">
       <span class="input-label">Event image link:</span>
-      <input type="text" name="imageLink" ng-model="imageLink">
+      <input type="text" name="imageLink" ng-model="event.img">
     </label>
     <label class="item item-input">
       <span class="input-label">Buy tickets link:</span>
-      <input type="text" name="ticketLink" ng-model="ticketLink">
+      <input type="text" name="ticketLink" ng-model="event.web_link">
     </label>
     <label class="item item-input">
       <span class="input-label">Price:</span>
-      <input type="number" name="price" ng-model="price">
+      <input type="number" name="price" ng-model="event.price">
     </label>
-    <input class="button button-block button-calm" type="submit" value="Submit event"></input>
-  </form>
-  <!-- need to fill in everything -->
-</div>
+    <div class="padding">
+      <input class="button button-block button-calm" type="submit" value="Submit event"></input>
+    </div>
+  </div>
+</form>
