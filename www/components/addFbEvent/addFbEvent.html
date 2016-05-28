@@ -20,12 +20,8 @@
       Optional information:
     </div>
     <label class="item item-input">
-      <span class="input-label">Buy tickets link:</span>
-      <input type="text" name="ticketLink" ng-model="ticketLink">
-    </label>
-    <label class="item item-input">
       <span class="input-label">Price:</span>
-      <input type="number" name="price" ng-model="price">
+      <input type="number" name="price" ng-model="event.price">
     </label>
     <div class="item" ng-show="facebookForm.$invalid || isNotValidFacebookEvent()">
       <p ng-show="isNotValidFacebookEvent()">* The facebook link is not valid</p>

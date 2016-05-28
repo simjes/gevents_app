@@ -6,11 +6,10 @@ angular.module('eventAdder', [])
 			replace: false,
 			controller: ['$scope', 'apiFactory', 'userFactory', '$http', function($scope, apiFactory, userFactory, $http) {
 				$scope.event = {
-					hosts:[] //TODO remove
+					hosts: [] //TODO remove
 				};
 				//TODO: use stock photo if user does not provide one
 				$scope.submitEvent = function(form) {
-					console.log("i was called");
 					var userInfo = userFactory.getUser();
 					$scope.event.type = getTypes();
 					$scope.event.uploader = {
@@ -19,12 +18,16 @@ angular.module('eventAdder', [])
 						mail: userInfo.email
 					};
 					getCoordinates($scope.event.address).success(function(result) {
-						console.log(result);
 						if (result.status === "OK") {
 							$scope.event.loc = [result.results[0].geometry.location.lat, result.results[0].geometry.location.lng];
 						}
-						console.log($scope.event);
 						apiFactory.addEvent($scope.event).success(function(addResult) {
+							//TODO: change response on server, and check response here. give user proper feedback, ionic popup ?
+							//TODO: clear event type
+							$scope.eventForm.$setPristine();
+							$scope.event = {
+								hosts: [] //TODO remove
+							};
 							console.log(addResult);
 						});
 					});
