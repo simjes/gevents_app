@@ -1,68 +1,66 @@
 <div class="row text-center details-img-container">
-    <img ng-if="event.img" ng-src="{{event.img}}" />
-    <!-- need stock img -->
-    <img ng-if="!event.img" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg" />
-    <p ng-if="event.price > 0">Price: {{event.price}},-</p>
+  <img ng-if="event.img" ng-src="{{event.img}}"/>
+  <!-- need stock img -->
+  <img ng-if="!event.img" ng-src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg"/>
+  <p ng-if="event.price > 0">
+    Price:
+    {{event.price}},-
+  </p>
 </div>
 
 <div class="row text-center">
-    <div class="col">
-        <i class="icon ion-ios-game-controller-a type-icon-details" ng-class="isType('lan') ? '' : 'icon-inactive'" title="Lan"></i>
-        <i class="icon ion-tshirt type-icon-details" ng-class="isType('cosplay') ? '' : 'icon-inactive'" title="Cosplay"></i>
-        <i class="icon ion-compose type-icon-details" ng-class="isType('board') ? '' : 'icon-inactive'" title="Board Games"></i>
-        <i class="icon ion-ios-film type-icon-details" ng-class="isType('other') ? '' : 'icon-inactive'" title="Other"></i>
-    </div>
+  <div class="col">
+    <i class="icon ion-ios-game-controller-a type-icon-details" ng-class="isType('lan') ? '' : 'icon-inactive'" title="Lan"></i>
+    <i class="icon ion-tshirt type-icon-details" ng-class="isType('cosplay') ? '' : 'icon-inactive'" title="Cosplay"></i>
+    <i class="icon ion-compose type-icon-details" ng-class="isType('board') ? '' : 'icon-inactive'" title="Board Games"></i>
+    <i class="icon ion-ios-film type-icon-details" ng-class="isType('other') ? '' : 'icon-inactive'" title="Other"></i>
+  </div>
 </div>
 
-<div class="row row-center"> <!-- ng-if? -->
-    <div class="col col-20 text-center">
-        <i class="icon ion-ios-clock info-icon"></i>
-    </div>
-    <div class="col col-80">
-        <b>Start:</b> {{event.date_start | date:"dd/MM/yyyy 'at' H:mm"}}
-        <br>
-        <b>End:</b> {{event.date_end | date:"dd/MM/yyyy 'at' H:mm"}}
-    </div>
+<div class="row row-center">
+  <!-- ng-if? -->
+  <div class="col col-20 text-center">
+    <i class="icon ion-ios-clock info-icon"></i>
+  </div>
+  <div class="col col-60">
+    <b>Start:</b>
+    {{event.date_start | date:"dd/MM/yyyy 'at' H:mm"}}
+    <br>
+    <b>End:</b>
+    {{event.date_end | date:"dd/MM/yyyy 'at' H:mm"}}
+  </div>
+  <div class="col col-20 text-center">
+    <!-- use coords? -->
+    <!-- click on text instead? -->
+    <a class="info-icon-eventlist" href="#" ng-click="">
+      <i class="icon ion-calendar"></i>
+    </a>
+  </div>
 </div>
 <div class="row row-center" ng-if="event.address">
-    <div class="col col-20 text-center">
-        <i class="icon ion-location info-icon"> </i>
-    </div>
-    <div class="col col-60">
-        {{event.address.street}}
-        <br> {{event.address.zip_code}} {{event.address.city}}
-    </div>
-    <div class="col col-20 text-center">
-        <!-- use coords? -->
-        <!-- click on text instead? -->
-        <a class="info-icon-eventlist" href="#" ng-click="openExternal('https://www.google.no/maps/place/{{event.address.street}},+{{event.address.zip_code}}+{{event.address.city}}')">
-            <i class="icon ion-map"> </i>
-        </a>
-    </div>
-</div>
-<div class="row row-center" ng-if="event.web_link">
-    <div class="col col-20 text-center">
-        <i class="icon ion-ios-browsers info-icon"> </i>
-    </div>
-    <div class="col col-80">
-        <a href="#" ng-click="openExternal('{{event.web_link}}')">Buy tickets</a><!-- change to ticket icon? -->
-    </div>
-</div>
-<div class="row row-center" ng-if="event.fb_link">
-    <div class="col col-20 text-center">
-        <i class="icon ion-social-facebook info-icon"> </i>
-    </div>
-    <div class="col col-80">
-        <a href="#" ng-click="openExternal('{{event.fb_link}}')">Go to Facebook event</a>
-    </div>
+  <div class="col col-20 text-center">
+    <i class="icon ion-location info-icon"></i>
+  </div>
+  <div class="col col-60">
+    {{event.address.street}}
+    <br>
+    {{event.address.zip_code}}
+    {{event.address.city}}
+  </div>
+  <div class="col col-20 text-center">
+    <!-- use coords? -->
+    <!-- click on text instead? -->
+    <a class="info-icon-eventlist" href="#" ng-click="openExternal('https://www.google.no/maps/place/{{event.address.street}},+{{event.address.zip_code}}+{{event.address.city}}')">
+      <i class="icon ion-map"></i>
+    </a>
+  </div>
 </div>
 <div class="row row-center" ng-if="event.description">
-    {{event.description}}
+  <div class="padding">
+    <pre>{{event.description}}</pre>
+  </div>
 </div>
-
-<!-- <div class="text-center">Hosted by:</div>
-<div ng-repeat="host in event.hosts" ng-if="$index%2==0" class="row host-list">
-    <host-details class="col card-limiter" ng-class="event.hosts.length === 1 ? '' : ($index%2==0 && $index != (event.hosts.length - 1)  ? 'col-50' : '')"
-    ng-if="$index < event.hosts.length" host="host"></host-details>
-    <host-details class="col col-50 card-limiter" ng-if="($index + 1) < event.hosts.length" host="event.hosts[$index+1]"></host-details>
-</div> -->
+<div class="padding">
+  <a ng-if="event.web_link" class="button button-block icon-left ion-card button-calm" ng-click="openExternal('{{event.web_link}}')">Buy ticket</a>
+  <a ng-if="event.fb_link" class="button button-block icon-left ion-social-facebook button-calm" ng-click="openExternal('{{event.fb_link}}')">Go to Facebook event</a>
+</div>

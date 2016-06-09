@@ -24,6 +24,7 @@
 
     <label class="item item-input" ng-class="{ 'has-error' : eventForm.description.$invalid && eventForm.$submitted}">
       <span class="input-label">Description:</span>
+      <!-- <ion-textarea name="description" ng-model="event.description" required="true"></ion-textarea> TODO: multiline description -->
       <input type="text" name="description" ng-model="event.description" required="true">
     </label>
     <div ng-messages="eventForm.description.$error" ng-show="eventForm.description.$error && eventForm.$submitted">

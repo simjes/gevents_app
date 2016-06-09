@@ -109,6 +109,10 @@ label.item.valid {
 
 
 //override
+pre {
+    font-family: "Ionicons";
+}
+
 .dark {
   background-color: $menu-bg !important;
   color: $text-secondary;

@@ -9891,6 +9891,9 @@ label.item.valid {
   padding: 5px 0 5px 16px;
   color: red; }
 
+pre {
+  font-family: "Ionicons"; }
+
 .dark {
   background-color: #232228 !important;
   color: rgba(255, 255, 255, 0.7); }
