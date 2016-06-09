@@ -8,5 +8,8 @@
     "angular-moment": "^0.10.3",
     "angular-messages": "^1.5.5",
     "ngCordova": "^0.1.26-alpha"
+  },
+  "resolutions": {
+    "angular": ">= 1.2.23"
   }
 }
