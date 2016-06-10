@@ -13,21 +13,24 @@
   <ion-side-menu side="left">
     <ion-content class="dark">
       <div class="text-center">
-        <img id="logo-img" src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg"/>
+        <img id="logo-img" src="https://i.ytimg.com/vi/vfcMSDzF0hs/hqdefault.jpg" />
       </div>
 
       <ion-list ng-init="getEvents('app.allEvents')">
-        <ion-item ng-class="isThisCurrentState('{{option.state}}') ? 'current-selected': ''" ng-repeat="option in menuOptions" menu-close ng-click="goToPage('{{option.state}}')">
+        <ion-item class="item-icon-right" ng-class="isThisCurrentState('{{option.state}}') ? 'current-selected': ''" ng-repeat="option in menuOptions" menu-close ng-click="goToPage('{{option.state}}')">
           {{option.menuText}}
+          <i class="icon {{option.icon}}"></i>
         </ion-item>
-        <ion-item menu-close ng-class="isThisCurrentState('app.addEvent') ? 'current-selected': ''" ng-click="goToPage('app.addEvent')"> <!-- TODO: ng-if="loggedIn"-->
-            Add new event
+        <ion-item class="item-icon-right" menu-close ng-class="isThisCurrentState('app.addEvent') ? 'current-selected': ''" ng-click="goToPage('app.addEvent')">
+          <!-- TODO: ng-if="loggedIn"-->
+          Add new event
+          <i class="icon ion-ios-plus-outline"></i>
         </ion-item>
         <ion-item menu-close ng-controller="LoginCtrl" ng-init="isLoggedIn()" ng-if="!loggedIn">
-            <a class="button button-block button-calm" ng-click="facebookSignIn()">Log in using Facebook</a>
+          <a class="button button-block button-calm icon-left ion-social-facebook" ng-click="facebookSignIn()">Log in</a>
         </ion-item>
         <ion-item menu-close ng-if="loggedIn">
-            <a class="button button-block button-calm" ng-click="facebookSignOut()">Log out</a>
+          <a class="button button-block button-calm" ng-click="facebookSignOut()">Log out</a>
         </ion-item>
       </ion-list>
     </ion-content>

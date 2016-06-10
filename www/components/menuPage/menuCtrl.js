@@ -4,22 +4,28 @@ angular.module('geekeventsApp.controllers', [])
 
       $scope.menuOptions = [{
         menuText: 'All Events',
-        state: 'app.allEvents'
+        state: 'app.allEvents',
+        icon: 'ion-earth'
       }, {
         menuText: 'Local Events',
-        state: 'app.localEvents'
+        state: 'app.localEvents',
+        icon: 'ion-ios-location-outline'
       }, {
         menuText: 'Gaming Events',
-        state: 'app.gameEvents'
+        state: 'app.gameEvents',
+        icon: 'ion-ios-game-controller-a-outline'
       }, {
         menuText: 'Cosplay Events',
-        state: 'app.cosplayEvents'
+        state: 'app.cosplayEvents',
+        icon: 'ion-tshirt-outline'
       }, {
         menuText: 'Board Game Events',
-        state: 'app.boardEvents'
+        state: 'app.boardEvents',
+        icon: 'ion-compose'
       }, {
         menuText: 'Other Events',
-        state: 'app.otherEvents'
+        state: 'app.otherEvents',
+        icon: 'ion-ios-film'
       }];
 
       $scope.headline = "All Events";
