@@ -9897,9 +9897,6 @@ pre {
 ion-header-bar {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.23); }
 
-.menu-content {
-  box-shadow: 10px 0 5px 0 rgba(0, 0, 0, 0.23); }
-
 .dark {
   background-color: #232228 !important;
   color: rgba(255, 255, 255, 0.7); }

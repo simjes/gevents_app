@@ -77,22 +77,37 @@ angular.module('geekeventsApp.controllers', [])
       };
 
       $scope.goToPage = function(state) {
-        //changing page dosnt look good atm, fix it.
-        if (state != $state.current.name) {
-          if (state != "app.addEvent") {
-            $ionicLoading.show({
-              template: '<ion-spinner icon="ripple" class="spinner-calm"></ion-spinner> </br> Loading events'
-            });
-          }
-          $scope.eventList = [];
-          $ionicHistory.nextViewOptions({
-            disableBack: true
-          });
-          setTitle(state);
-          $scope.getEvents(state);
-          $state.go(state);
-        }
+        $ionicHistory.nextViewOptions({
+          disableBack: true,
+          disableAnimate: true,
+        });
+        $state.go(state);
+        setTitle(state);
       };
+
+      $scope.$on("$ionicView.beforeEnter", function(event, data) {
+        if (menuStateTransition(data.stateId) && data.direction !== "back") {
+          $ionicLoading.show({
+            template: '<ion-spinner icon="ripple" class="spinner-calm"></ion-spinner> </br> Loading events'
+          });
+          $scope.eventList = [];
+        }
+      });
+
+      $scope.$on("$ionicView.afterEnter", function(event, data) {
+        if (menuStateTransition(data.stateId) && data.direction !== "back") {
+          $scope.getEvents(data.stateId);
+        }
+      });
+
+      function menuStateTransition(state) {
+        for (var i = 0; i < $scope.menuOptions.length; i++) {
+          if ($scope.menuOptions[i].state === state) {
+              return true;
+          }
+        }
+        return false;
+      }
 
       function setTitle(state) {
         if (state === "app.addEvent") {
@@ -121,20 +136,6 @@ angular.module('geekeventsApp.controllers', [])
           $scope.$broadcast('scroll.refreshComplete');
         });
       }
-
-      /*$scope.newMonth = function(date) {
-        var dateObj = new Date(date);
-
-        if ($scope.currentMonthYear === "") {
-          $scope.currentMonthYear = new Date(date);
-          return true;
-        } else if (dateObj.getFullYear() === $scope.currentMonthYear.getFullYear() && dateObj.getMonth() === $scope.currentMonthYear.getMonth()) {
-          return false;
-        } else {
-          $scope.currentMonthYear = new Date(date);
-          return true;
-        }
-      };*/
 
       $scope.refreshEvents = function() {
         $scope.getEvents($state.current.name);
