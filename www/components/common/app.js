@@ -1,6 +1,6 @@
 angular.module('geekeventsApp', ['ionic', 'geekeventsApp.controllers', 'shortEvent', 'eventDetails', 'hostDetails', 'eventAdderFacebook', 'eventAdder', 'ngCordova', 'angularMoment', 'ngMessages', 'dateValidator'])
 	.constant('ApiEndpoint', {
-		url: 'http://51.174.85.200:3000/api' //TODO:  http://localhost:8100/api
+		url: 'http://192.168.173.23:3000/api' //TODO:  http://localhost:8100/api
 	})
 	.run(function($rootScope, $state, $stateParams, $ionicPlatform) {
 		$rootScope.$state = $state;
